@@ -22,6 +22,12 @@ export class ExamenService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  addExam(exam: Examen): Observable<Examen> {
+    return this.http
+    .post<Examen>(this.apiURL, exam, this.httpOptions)
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   // EN cas d'erreure de communication avec le serveur
   handleError(error) {
     //déclaration d'une variable vide pour y associer un message d'erreur

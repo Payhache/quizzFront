@@ -1,3 +1,4 @@
+import {FormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -9,6 +10,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ExamenListComponent } from './components/examen/examen-list/examen-list.component';
 import { HomeAdminComponent } from './components/home/home-admin/home-admin.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ExamenAddComponent } from './components/examen/examen-add/examen-add.component';
 
 
 
@@ -17,14 +20,17 @@ import { HomeAdminComponent } from './components/home/home-admin/home-admin.comp
     AppComponent,
     MenuComponent,
     ExamenListComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    ExamenAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

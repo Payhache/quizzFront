@@ -9,17 +9,17 @@ import { ExamenService } from 'src/app/services/examen.service';
 })
 export class ExamenListComponent implements OnInit {
 
-  isloading:boolean;
+  isLoading:boolean;
   examens:Examen[];
 
   constructor(private examentService:ExamenService) { }
 
   ngOnInit(): void {
 
-    this.isloading=true;
+    this.isLoading=true;
     this.examentService.getAllExams().subscribe((data) => {
       this.examens = data['hydra:member'];
-      this.isloading = false;
+      this.isLoading = false;
       console.log(this.examens);
       
     })
