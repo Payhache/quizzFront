@@ -34,7 +34,7 @@ export class ExamenService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
-  editExamen(examen: Examen): Observable<Examen> {
+  postExamen(examen: Examen): Observable<Examen> {
     return this.http
     .put<Examen>(this.apiURL + '/' + examen.id, this.httpOptions)
     .pipe(retry(1), catchError(this.handleError));
