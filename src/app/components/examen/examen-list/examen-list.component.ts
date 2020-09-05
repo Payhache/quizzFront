@@ -10,6 +10,7 @@ import { ExamenService } from 'src/app/services/examen.service';
 export class ExamenListComponent implements OnInit {
 
   isLoading:boolean;
+
   examens:Examen[];
 
   constructor(private examentService:ExamenService) { }
@@ -20,9 +21,17 @@ export class ExamenListComponent implements OnInit {
     this.examentService.getAllExams().subscribe((data) => {
       this.examens = data['hydra:member'];
       this.isLoading = false;
-      console.log(this.examens);
-      
-    })
-  }
+    });
+  };
+  
+  deleteExamen(id:number) {
+    this.isLoading=true;
+    this.examentService.deleteExam(id).subscribe(then => {
+      this.examentService.getAllExams().subscribe((data:Examen[]) => {
+        this.examens = data['hydra:member'];
+        this.isLoading = false;
+      }); 
+    });
+  };
 
 }

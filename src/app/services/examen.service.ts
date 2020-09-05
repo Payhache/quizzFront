@@ -27,7 +27,26 @@ export class ExamenService {
     .post<Examen>(this.apiURL, exam, this.httpOptions)
     .pipe(retry(1), catchError(this.handleError));
   }
+  
+  deleteExam(id:number):Observable<Examen> {
+    return this.http
+    .delete<Examen>(this.apiURL + '/' + id, this.httpOptions)
+    .pipe(retry(1), catchError(this.handleError));
+  }
 
+  editExamen(examen: Examen): Observable<Examen> {
+    return this.http
+    .put<Examen>(this.apiURL + '/' + examen.id, this.httpOptions)
+    .pipe(retry(1), catchError(this.handleError));
+
+  }
+
+  getOneExam(id:number):Observable<Examen> {
+    return this.http
+    .get<Examen>(this.apiURL + '/' + id, this.httpOptions)
+    .pipe(retry(1), catchError(this.handleError));
+
+  }
   // EN cas d'erreure de communication avec le serveur
   handleError(error) {
     //déclaration d'une variable vide pour y associer un message d'erreur

@@ -12,6 +12,7 @@ import { ExamenListComponent } from './components/examen/examen-list/examen-list
 import { HomeAdminComponent } from './components/home/home-admin/home-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExamenAddComponent } from './components/examen/examen-add/examen-add.component';
+import { ExamenEditComponent } from './components/examen/examen-edit/examen-edit.component';
 
 
 
@@ -21,7 +22,8 @@ import { ExamenAddComponent } from './components/examen/examen-add/examen-add.co
     MenuComponent,
     ExamenListComponent,
     HomeAdminComponent,
-    ExamenAddComponent
+    ExamenAddComponent,
+    ExamenEditComponent
   ],
   imports: [
     BrowserModule,
