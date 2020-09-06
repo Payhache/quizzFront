@@ -23,9 +23,9 @@ export class ExamenEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
     this.isLoading = true;
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.examenService.getOneExam(this.id).subscribe((data) => {      
+    this.examenService.getOneExam(id).subscribe((data) => {      
       this.examen = data;
       this.isLoading = false
     })

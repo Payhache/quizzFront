@@ -2,7 +2,7 @@
 <ng-container *ngIf="!isLoading">
     <form #pcForm="ngForm" (ngSubmit)="editExamen()">
         <label for="examen_name"> Nouveau titre</label>
-        <input type="textarea" class="form-control" id="examen_name" name="examen_name" required [(ngModel)]="examen.name" >
+        <input type="text" class="form-control" id="examen_name" name="examen_name" required [(ngModel)]="examen.name" >
         <input type="submit">
     </form>
 </ng-container>
