@@ -3,6 +3,7 @@ import { Examen } from '../models/examen';
 import { catchError, retry } from 'rxjs/internal/operators';
 import { Observable, throwError } from 'rxjs';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
+import { Question } from '../models/question';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,12 @@ export class ExamenService {
   constructor(private http:HttpClient) { }
 
   getAllExams(): Observable<Examen[]> {
-    return this.http.get<Examen[]>(this.apiURL)
+    return this.http.get<Examen[]>(this.apiURL )
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
+  getQuestionsForExam(id:number):Observable<Question[]> {
+    return this.http.get<Question[]>(this.apiURL+ '/' + id + '/questions')
     .pipe(retry(1), catchError(this.handleError));
   }
 

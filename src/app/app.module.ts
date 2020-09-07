@@ -13,6 +13,7 @@ import { HomeAdminComponent } from './components/home/home-admin/home-admin.comp
 import { HttpClientModule } from '@angular/common/http';
 import { ExamenAddComponent } from './components/examen/examen-add/examen-add.component';
 import { ExamenEditComponent } from './components/examen/examen-edit/examen-edit.component';
+import { QuestionListComponent } from './components/question/question-list/question-list.component';
 
 
 
@@ -23,7 +24,8 @@ import { ExamenEditComponent } from './components/examen/examen-edit/examen-edit
     ExamenListComponent,
     HomeAdminComponent,
     ExamenAddComponent,
-    ExamenEditComponent
+    ExamenEditComponent,
+    QuestionListComponent
   ],
   imports: [
     BrowserModule,
