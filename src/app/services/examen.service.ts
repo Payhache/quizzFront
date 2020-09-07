@@ -36,7 +36,7 @@ export class ExamenService {
 
   postExamen(examen: Examen): Observable<Examen> {
     return this.http
-    .put<Examen>(this.apiURL + '/' + examen.id, this.httpOptions)
+    .put<Examen>(this.apiURL + '/' + examen.id, examen , this.httpOptions)
     .pipe(retry(1), catchError(this.handleError));
 
   }
