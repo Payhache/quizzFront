@@ -4,9 +4,11 @@ import { HomeAdminComponent } from './components/home/home-admin/home-admin.comp
 import { ExamenAddComponent } from './components/examen/examen-add/examen-add.component';
 import { ExamenEditComponent } from './components/examen/examen-edit/examen-edit.component';
 import { QuestionListComponent } from './components/question/question-list/question-list.component';
+import {QuestionAddComponent} from './components/question/question-add/question-add.component';
 
 
 const routes: Routes = [
+  { path: 'admin/examen/addquestion/:id', component: QuestionAddComponent },
   { path: 'admin/examen/add', component: ExamenAddComponent },
   { path: 'admin/examen/edit/:id', component: ExamenEditComponent },
   { path: 'admin/examen/:id', component: QuestionListComponent },

@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExamenAddComponent } from './components/examen/examen-add/examen-add.component';
 import { ExamenEditComponent } from './components/examen/examen-edit/examen-edit.component';
 import { QuestionListComponent } from './components/question/question-list/question-list.component';
+import { QuestionAddComponent } from './components/question/question-add/question-add.component';
 
 
 
@@ -25,7 +26,8 @@ import { QuestionListComponent } from './components/question/question-list/quest
     HomeAdminComponent,
     ExamenAddComponent,
     ExamenEditComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    QuestionAddComponent
   ],
   imports: [
     BrowserModule,

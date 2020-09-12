@@ -4,10 +4,10 @@ import { HttpResponseBase } from '@angular/common/http';
 import { ReponseQuestion } from './reponse-question';
 
 export class Question {
-    id:number;
-    nbr:number;
-    name:string;
-    picture:string;
-    examen:Examen;
-    reponses:ReponseQuestion;
+    id: number;
+    nbr: number;
+    name: string;
+    picture: string;
+    examen: Examen|any;
+    reponses: ReponseQuestion;
 }

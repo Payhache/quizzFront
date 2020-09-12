@@ -3,7 +3,7 @@
       <img src="https://kaksidesign.com/wp-content/uploads/4.4logo2-chu.jpg" width="50" height="50" class="d-inline-block align-top" alt="">
       <span>Laboratoire de Saint Etienne</span>
     </a>
-    <a class="btn btn btn-outline-success m-2 ml-auto" routerLink="/pc/add" > Ajouter un PC</a>
+    <a *ngIf="question" class="btn btn btn-outline-success m-2 ml-auto" routerLink="/pc/add" > Ajouter une question</a>
     <div class="btn-group" dropdown>
       <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-success dropdown-toggle" aria-controls="dropdown-basic">
         Gerer Les questionnaires <span class="caret"></span>
@@ -14,4 +14,4 @@
       </ul>
     </div>
   </nav>
-  
+

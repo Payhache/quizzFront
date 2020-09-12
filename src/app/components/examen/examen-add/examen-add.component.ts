@@ -10,19 +10,17 @@ import { Router } from '@angular/router';
 })
 export class ExamenAddComponent implements OnInit {
 
-  constructor(private examenservice: ExamenService, private router:Router) { }
-  
-  examen = new Examen;
+  constructor(private examenservice: ExamenService, private router: Router) { }
 
-
+   examen = new Examen();
 
   ngOnInit(): void {
   }
 
-  submitExamen():void {
+  submitExamen(): void {
     this.examenservice.addExam(this.examen).subscribe(data => {
       this.router.navigate(['/admin']);
-    })
-    
+    });
+
   }
 }

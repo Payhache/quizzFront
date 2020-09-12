@@ -15,7 +15,7 @@ export class QuestionService {
     })
     };
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getAllQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(this.apiURL)
@@ -24,6 +24,12 @@ export class QuestionService {
 
   getQuestionsForExam(id: number): Observable<Question[]> {
     return this.http.get<Question[]>(this.apiURL + '?examen.id=' + id )
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  addQuestionOnExam(question: Question, id: number): Observable<Question> {
+    return this.http
+      .post<Question>(this.apiURL + '?examen.id=' + id, Question, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
 
