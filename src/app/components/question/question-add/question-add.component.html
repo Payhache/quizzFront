@@ -1,5 +1,6 @@
 <form #marqueForm="ngForm" (ngSubmit)="submitQuestion()">
   <label for="question"> Saississez la question à ajouter au questionnaire : </label>
   <input type="text" name="question" id="question"  required [(ngModel)]="question.name"> <br>
+
   <button type="submit">Ajouter la question</button>
 </form>

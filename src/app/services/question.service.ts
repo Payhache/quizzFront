@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/internal/operators';
 import { Observable, throwError } from 'rxjs';
 import { Question } from '../models/question';
+import {Examen} from '../models/examen';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,11 @@ export class QuestionService {
     return this.http.get<Question[]>(this.apiURL)
     .pipe(retry(1), catchError(this.handleError));
   }
+  getOneQuestion(id: number): Observable<Question> {
+    return this.http
+      .get<Question>(this.apiURL  + '/' + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+  }
 
   getQuestionsForExam(id: number): Observable<Question[]> {
     return this.http.get<Question[]>(this.apiURL + '?examen.id=' + id )
@@ -29,10 +35,15 @@ export class QuestionService {
 
   addQuestionOnExam(question: Question, id: number): Observable<Question> {
     return this.http
-      .post<Question>(this.apiURL + '?examen.id=' + id, Question, this.httpOptions)
+      .post<Question>(this.apiURL + '?examen.id=' + id, question, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
 
+  putQuestion(question: Question): Observable<Question> {
+    return this.http
+      .put<Question>(this.apiURL + '/' + question.id, question , this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+  }
   // EN cas d'erreure de communication avec le serveur
     handleError(error) {
       //déclaration d'une variable vide pour y associer un message d'erreur

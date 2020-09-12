@@ -1,0 +1,9 @@
+<h1> Modifier Question </h1>
+
+<ng-container *ngIf="!isLoading">
+  <form #questionForm="ngForm" (ngSubmit)="editQuestion()">
+    <label for="question_name"> Nouveau titre</label>
+    <input type="text" class="form-control" id="question_name" name="question_name" required [(ngModel)]="question.name" >
+    <input type="submit">
+  </form>
+</ng-container>

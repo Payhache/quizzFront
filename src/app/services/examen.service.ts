@@ -49,9 +49,9 @@ export class ExamenService {
     .pipe(retry(1), catchError(this.handleError));
 
   }
-  // EN cas d'erreure de communication avec le serveur
+  // En cas d'erreure de communication avec le serveur
   handleError(error) {
-    //déclaration d'une variable vide pour y associer un message d'erreur
+    // déclaration d'une variable vide pour y associer un message d'erreur
     let errorMessage = '';
     // Si j'ai pas compris ....
     if (error.error instanceof ErrorEvent) {

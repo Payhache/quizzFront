@@ -10,9 +10,9 @@ import { ExamenService } from 'src/app/services/examen.service';
   styleUrls: ['./examen-edit.component.css']
 })
 export class ExamenEditComponent implements OnInit {
-  id:number;
-  isLoading:boolean;
-  examen:Examen;
+  id: number;
+  isLoading: boolean;
+  examen: Examen;
 
 
   constructor(
@@ -25,17 +25,16 @@ export class ExamenEditComponent implements OnInit {
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.isLoading = true;
-    this.examenService.getOneExam(id).subscribe((data) => {      
+    this.examenService.getOneExam(id).subscribe((data) => {
       this.examen = data;
-      this.isLoading = false
-    })
+      this.isLoading = false;
+    });
   }
   editExamen() {
     this.examenService.postExamen(this.examen).subscribe( () => {
       console.log(this.examen);
       this.router.navigate(['/admin']);
-    })
-    
+    });
   }
 
 }
