@@ -15,10 +15,9 @@
       <tr *ngFor="let exam of this.examens">
         <th scope="row">{{ exam.id }}</th>
         <td>{{ exam.name }}</td>
-        <td> 
-          
-          <button class="btn" [routerLink]="['/admin/examen', exam.id, 'questions']"> voir les questions </button>  / 
-          <button class="btn" [routerLink]="['/admin/examen/edit', exam.id]"> Editer </button> / 
+        <td>
+          <button class="btn" [routerLink]="['/admin/examen', exam.id]"> voir les questions </button>  /
+          <button class="btn" [routerLink]="['/admin/examen/edit', exam.id]"> Editer </button> /
           <button class="btn" (click)="deleteExamen(exam.id)"> Supprimer </button>
         </td>
       </tr>

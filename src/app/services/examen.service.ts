@@ -16,25 +16,21 @@ export class ExamenService {
     })
     };
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getAllExams(): Observable<Examen[]> {
     return this.http.get<Examen[]>(this.apiURL )
     .pipe(retry(1), catchError(this.handleError));
   }
 
-  getQuestionsForExam(id:number):Observable<Question[]> {
-    return this.http.get<Question[]>(this.apiURL+ '/' + id + '/questions')
-    .pipe(retry(1), catchError(this.handleError));
-  }
 
   addExam(exam: Examen): Observable<Examen> {
     return this.http
     .post<Examen>(this.apiURL, exam, this.httpOptions)
     .pipe(retry(1), catchError(this.handleError));
   }
-  
-  deleteExam(id:number):Observable<Examen> {
+
+  deleteExam(id: number): Observable<Examen> {
     return this.http
     .delete<Examen>(this.apiURL + '/' + id, this.httpOptions)
     .pipe(retry(1), catchError(this.handleError));
@@ -47,7 +43,7 @@ export class ExamenService {
 
   }
 
-  getOneExam(id:number):Observable<Examen> {
+  getOneExam(id: number): Observable<Examen> {
     return this.http
     .get<Examen>(this.apiURL + '/' + id, this.httpOptions)
     .pipe(retry(1), catchError(this.handleError));

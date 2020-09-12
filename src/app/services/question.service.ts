@@ -21,7 +21,13 @@ export class QuestionService {
     return this.http.get<Question[]>(this.apiURL)
     .pipe(retry(1), catchError(this.handleError));
   }
-    // EN cas d'erreure de communication avec le serveur
+
+  getQuestionsForExam(id: number): Observable<Question[]> {
+    return this.http.get<Question[]>(this.apiURL + '?examen.id=' + id )
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  // EN cas d'erreure de communication avec le serveur
     handleError(error) {
       //déclaration d'une variable vide pour y associer un message d'erreur
       let errorMessage = '';
@@ -36,5 +42,5 @@ export class QuestionService {
       window.alert(errorMessage);
       return throwError(errorMessage);
     }
-  
+
 }

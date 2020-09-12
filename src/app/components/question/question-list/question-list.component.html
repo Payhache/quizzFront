@@ -1,1 +1,10 @@
-<p>question-list works!</p>
+<ng-container *ngIf="isLoading">
+  <h2>En chargement ....</h2>
+</ng-container>
+
+<ng-container *ngIf="!isLoading">
+  <div *ngFor="let question of this.questions">
+    <h2>  {{question.name}} </h2>
+  </div>
+
+</ng-container>

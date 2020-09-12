@@ -9,7 +9,7 @@ import { QuestionListComponent } from './components/question/question-list/quest
 const routes: Routes = [
   { path: 'admin/examen/add', component: ExamenAddComponent },
   { path: 'admin/examen/edit/:id', component: ExamenEditComponent },
-  { path: 'admin/examen/:id/questions', component: QuestionListComponent },
+  { path: 'admin/examen/:id', component: QuestionListComponent },
   { path: 'admin', component: HomeAdminComponent }
 ];
 
