@@ -1,4 +1,4 @@
 export class Examen {
-    id:number;
-    name:string;
+    id: number;
+    name: string;
 }

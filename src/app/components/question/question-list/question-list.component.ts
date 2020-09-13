@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/models/question';
 import {QuestionService} from '../../../services/question.service';
+import {ReponseQuestion} from '../../../models/reponse-question';
+import {ReponseService} from '../../../services/reponse.service';
 
 @Component({
   selector: 'app-question-list',
@@ -12,9 +14,12 @@ export class QuestionListComponent implements OnInit {
 
   isLoading: boolean;
   questions: Question[];
+  reponses: ReponseQuestion[];
   idExam: number;
 
-  constructor(private questionService: QuestionService, private route: ActivatedRoute) {
+  constructor(private questionService: QuestionService,
+              private route: ActivatedRoute,
+              private reponseService: ReponseService) {
   }
 
   ngOnInit(): void {
@@ -22,8 +27,10 @@ export class QuestionListComponent implements OnInit {
     this.isLoading = true;
     this.questionService.getQuestionsForExam(this.idExam).subscribe((data) => {
       this.questions = data['hydra:member'];
+      console.log(this.questions);
       this.isLoading = false;
     });
+
   }
 
   deleteQuestion(id: number) {
