@@ -27,6 +27,11 @@ export class QuestionService {
       .get<Question>(this.apiURL  + '/' + id, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
+  deleteQuestion(id: number): Observable<Question> {
+    return this.http
+      .delete<Question>(this.apiURL  + '/' + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+  }
 
   getQuestionsForExam(id: number): Observable<Question[]> {
     return this.http.get<Question[]>(this.apiURL + '?examen.id=' + id )

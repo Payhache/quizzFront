@@ -9,29 +9,28 @@ import { ExamenService } from 'src/app/services/examen.service';
 })
 export class ExamenListComponent implements OnInit {
 
-  isLoading:boolean;
+  isLoading: boolean;
 
-  examens:Examen[];
+  examens: Examen[];
 
-  constructor(private examentService:ExamenService) { }
+  constructor(private examentService: ExamenService) { }
 
   ngOnInit(): void {
 
-    this.isLoading=true;
+    this.isLoading = true;
     this.examentService.getAllExams().subscribe((data) => {
       this.examens = data['hydra:member'];
       this.isLoading = false;
     });
-  };
-  
-  deleteExamen(id:number) {
-    this.isLoading=true;
+  }
+  deleteExamen(id: number) {
+    this.isLoading = true;
     this.examentService.deleteExam(id).subscribe(then => {
-      this.examentService.getAllExams().subscribe((data:Examen[]) => {
+      this.examentService.getAllExams().subscribe((data: Examen[]) => {
         this.examens = data['hydra:member'];
         this.isLoading = false;
-      }); 
+      });
     });
-  };
+  }
 
 }
