@@ -7,9 +7,27 @@
     <h2>  {{question.name}} </h2>
     <button class="btn btn-primary" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
     <button class="btn btn-primary" (click)="deleteQuestion(question.id)"> Supprimer question</button>
+    <button class="btn btn-primary" (click)="showForm()"> Ajouter une réponse </button>
+
+    <div *ngIf="writeReponse">
+      <form #reponseForm="ngForm" (ngSubmit)="submitReponse(question.id)">
+        <label for="reponseQuestion"> Saississez la réponse à ajouter : </label>
+        <input type="text" name="reponseQuestion" id="reponseQuestion"  required [(ngModel)]="reponseToquestion.name"> <br>
+        <label for="isOk"> Est ce la bonne réponse ? : </label>
+        <select class="w-25 custom-select mr-sm-2" id="isOk" required [(ngModel)]="reponseToquestion.isOk" name="isOk">
+          <option > Mauvaise réponse </option>
+          <option > Bonne réponse </option>
+        </select>
+        <br>
+        <button type="submit">Ajouter la réponse</button>
+      </form>
+    </div>
 
     <ul>
-        <li *ngFor="let reponse of question.reponses" > {{reponse.name}} </li>
+        <li *ngFor="let reponse of question.reponses" >
+          {{reponse.name}}
+          <a (click)="deleteReponse(reponse.id)">   Supprimer </a>
+        </li>
     </ul>
 
   </div>

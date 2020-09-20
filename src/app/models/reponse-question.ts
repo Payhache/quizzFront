@@ -2,11 +2,11 @@
 
 export class ReponseQuestion {
     id: number;
-    letter: string;
+    name: string;
     isOk: boolean;
     explanation: string;
     picture: string;
     picture2: string;
     picture3: string;
-    question: Question;
+    question: Question|number;
 }

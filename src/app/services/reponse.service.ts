@@ -15,12 +15,25 @@ export class ReponseService {
       'Content-Type': 'application/json'
     })
   };
-
   constructor(private http: HttpClient) { }
   getReponsesForQuestion(id: number): Observable<ReponseQuestion[]> {
     return this.http.get<ReponseQuestion[]>(this.apiURL + '?question.id=' + id )
       .pipe(retry(1), catchError(this.handleError));
   }
+  postReponseToquestion(reponseQuestion: ReponseQuestion, id: number): Observable<ReponseQuestion> {
+    return this.http
+      .post<ReponseQuestion>(this.apiURL + '?question.id=' + id, reponseQuestion, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+
+  }
+
+  deleteReponse(id: number): Observable<ReponseQuestion>{
+    return this.http
+      .delete<ReponseQuestion>(this.apiURL  + '/' + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+
+  }
+
 
   // EN cas d'erreure de communication avec le serveur
   handleError(error) {

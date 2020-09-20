@@ -29,7 +29,7 @@ export class QuestionEditComponent implements OnInit {
   }
   editQuestion() {
     this.questionService.putQuestion(this.question).subscribe( () => {
-
+      console.log(this.question);
       this.router.navigate(['/admin']);
     });
   }
