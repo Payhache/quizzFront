@@ -16,6 +16,7 @@ import { ExamenEditComponent } from './components/examen/examen-edit/examen-edit
 import { QuestionListComponent } from './components/question/question-list/question-list.component';
 import { QuestionAddComponent } from './components/question/question-add/question-add.component';
 import { QuestionEditComponent } from './components/question/question-edit/question-edit.component';
+import { ReponseEditComponent } from './components/reponse/reponse-edit/reponse-edit.component';
 
 
 
@@ -30,6 +31,7 @@ import { QuestionEditComponent } from './components/question/question-edit/quest
     QuestionListComponent,
     QuestionAddComponent,
     QuestionEditComponent,
+    ReponseEditComponent,
   ],
   imports: [
     BrowserModule,

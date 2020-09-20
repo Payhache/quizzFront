@@ -34,6 +34,12 @@ export class ReponseService {
 
   }
 
+  getOneReponse(id: number): Observable<ReponseQuestion>{
+    return this.http
+      .put<ReponseQuestion>(this.apiURL  + '/' + id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
 
   // EN cas d'erreure de communication avec le serveur
   handleError(error) {

@@ -41,9 +41,10 @@ export class QuestionListComponent implements OnInit {
       });
     });
   }
-  showForm() {
+  showFormAddReponse() {
     this.writeReponse = true;
   }
+
   submitReponse(id: number) {
     this.reponseToquestion.isOk = this.transformToBooleen(this.reponseToquestion.isOk);
     this.reponseToquestion.question = id;

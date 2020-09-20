@@ -1,14 +1,18 @@
 <ng-container *ngIf="isLoading">
   <h2>En chargement .....</h2>
 </ng-container>
+
 <button [routerLink]="['/admin/examen/addquestion', this.idExam]"> Ajouter une question </button>
+
 <ng-container *ngIf="!isLoading">
   <div *ngFor="let question of this.questions">
     <h2>  {{question.name}} </h2>
     <button class="btn btn-primary" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
     <button class="btn btn-primary" (click)="deleteQuestion(question.id)"> Supprimer question</button>
-    <button class="btn btn-primary" (click)="showForm()"> Ajouter une réponse </button>
+    <button class="btn btn-primary" (click)="showFormAddReponse()"> Ajouter une réponse </button>
 
+
+    <!-- ##################### Ajout de la réponse ##################-->
     <div *ngIf="writeReponse">
       <form #reponseForm="ngForm" (ngSubmit)="submitReponse(question.id)">
         <label for="reponseQuestion"> Saississez la réponse à ajouter : </label>
@@ -22,11 +26,13 @@
         <button type="submit">Ajouter la réponse</button>
       </form>
     </div>
+    <!-- ##################### FIN Ajout de la réponse ##################-->
 
     <ul>
         <li *ngFor="let reponse of question.reponses" >
           {{reponse.name}}
           <a (click)="deleteReponse(reponse.id)">   Supprimer </a>
+          <a [routerLink]="['/admin/reponse/edit', reponse.id]">   Editer </a>
         </li>
     </ul>
 

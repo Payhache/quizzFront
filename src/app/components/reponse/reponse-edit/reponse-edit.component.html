@@ -1,0 +1,15 @@
+
+<div *ngIf="!isLoading">
+  <form #reponseForm="ngForm" (ngSubmit)="submitReponseEdited(reponse.id)">
+    <label for="reponseQuestion"> Saississez la réponse à ajouter : </label>
+    <input type="text" name="reponseQuestion" id="reponseQuestion"  required [(ngModel)]="reponse.name"> <br>
+    <label for="isOk"> Est ce la bonne réponse ? : </label>
+    <select class="w-25 custom-select mr-sm-2" id="isOk" required [(ngModel)]="reponse.isOk" name="isOk">
+      <option > Mauvaise réponse </option>
+      <option > Bonne réponse </option>
+    </select>
+    <br>
+    <button type="submit"> Editer la réponse</button>
+  </form>
+</div>
+

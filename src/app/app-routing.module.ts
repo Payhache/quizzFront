@@ -6,6 +6,7 @@ import { ExamenEditComponent } from './components/examen/examen-edit/examen-edit
 import { QuestionListComponent } from './components/question/question-list/question-list.component';
 import {QuestionAddComponent} from './components/question/question-add/question-add.component';
 import {QuestionEditComponent} from './components/question/question-edit/question-edit.component';
+import {ReponseEditComponent} from './components/reponse/reponse-edit/reponse-edit.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'admin/examen/add', component: ExamenAddComponent },
   { path: 'admin/examen/edit/:id', component: ExamenEditComponent },
   { path: 'admin/examen/:id', component: QuestionListComponent },
+  { path: 'admin/reponse/edit/:id', component: ReponseEditComponent },
   { path: 'admin/question/edit/:id', component: QuestionEditComponent },
 
   { path: 'admin', component: HomeAdminComponent }
