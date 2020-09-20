@@ -22,7 +22,6 @@ export class QuestionAddComponent implements OnInit {
   }
   submitQuestion(): void {
     this.question.examen = this.id;
-    console.log(this.question);
     this.questionService.addQuestionOnExam(this.question, this.id).subscribe( data => {
       this.router.navigate(['/admin/examen', this.id]);
     });

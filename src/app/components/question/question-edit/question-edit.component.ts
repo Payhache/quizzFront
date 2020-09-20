@@ -10,6 +10,7 @@ import {QuestionService} from '../../../services/question.service';
 })
 export class QuestionEditComponent implements OnInit {
   id: number;
+  idExam: number;
   isLoading: boolean;
   question: Question;
 
@@ -28,9 +29,9 @@ export class QuestionEditComponent implements OnInit {
     });
   }
   editQuestion() {
+    this.idExam = this.question.examen.id;
     this.questionService.putQuestion(this.question).subscribe( () => {
-      console.log(this.question);
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin/examen', this.idExam]);
     });
   }
 
