@@ -30,6 +30,8 @@ export class QuestionEditComponent implements OnInit {
   }
   editQuestion() {
     this.idExam = this.question.examen.id;
+    console.log('hello');
+    console.log(this.question);
     this.questionService.putQuestion(this.question).subscribe( () => {
       this.router.navigate(['/admin/examen', this.idExam]);
     });

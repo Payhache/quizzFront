@@ -4,6 +4,7 @@ import { catchError, retry } from 'rxjs/internal/operators';
 import { Observable, throwError } from 'rxjs';
 import {Question} from '../models/question';
 import {ReponseQuestion} from '../models/reponse-question';
+import {log} from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,11 @@ export class ReponseService {
       .pipe(retry(1), catchError(this.handleError));
   }
 
+  putReponse(reponse: ReponseQuestion): Observable<ReponseQuestion> {
+    return this.http
+      .put<ReponseQuestion>(this.apiURL + '/' + reponse.id, reponse , this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+  }
 
   // EN cas d'erreure de communication avec le serveur
   handleError(error) {
