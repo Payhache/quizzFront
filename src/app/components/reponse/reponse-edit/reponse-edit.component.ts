@@ -28,8 +28,7 @@ export class ReponseEditComponent implements OnInit {
     });
   }
 
-  submitReponseEdited(reponse: ReponseQuestion) {
-    console.log(this.reponse);
+  submitReponseEdited() {
     this.reponseService.putReponse(this.reponse).subscribe(() => {
        this.router.navigate(['/admin/examen', this.reponse.question.examen.id]);
      });

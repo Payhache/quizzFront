@@ -19,7 +19,8 @@ export class QuestionListComponent implements OnInit {
   }
 
   isLoading: boolean;
-  writeReponse: boolean;
+  writeReponse = false;
+  questionId: number;
   questions: Question[];
   reponseToquestion = new ReponseQuestion();
   idExam: number;
@@ -41,8 +42,9 @@ export class QuestionListComponent implements OnInit {
       });
     });
   }
-  showFormAddReponse() {
-    this.writeReponse = true;
+  showFormAddReponse(id: number) {
+    this.questionId = id;
+    this.writeReponse = this.writeReponse === false;
   }
 
   submitReponse(id: number) {
