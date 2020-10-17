@@ -7,6 +7,7 @@
 <ng-container *ngIf="!isLoading">
   <div *ngFor="let question of this.questions">
     <h2>  {{question.name}} </h2>
+
     <button class="btn btn-primary" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
     <button class="btn btn-primary" (click)="deleteQuestion(question.id)"> Supprimer question</button>
     <button class="btn btn-primary" (click)="showFormAddReponse(question.id)"> Ajouter une réponse</button>
@@ -34,9 +35,11 @@
 
     <ul>
       <li *ngFor="let reponse of question.reponses">
+       <span *ngIf="reponse.isOk"> <fa-icon [icon]="faCheck"> </fa-icon> </span>
+       <span *ngIf="!reponse.isOk"> <fa-icon [icon]="faTimesCircle"> </fa-icon> </span>
         {{reponse.name}}
-        <a (click)="deleteReponse(reponse.id)"> Supprimer </a>
-        <a [routerLink]="['/admin/reponse/edit', reponse.id]"> Editer </a>
+        <a (click)="deleteReponse(reponse.id)"> <fa-icon [icon]="faTrash"></fa-icon> </a>
+        <a [routerLink]="['/admin/reponse/edit', reponse.id]"> <fa-icon [icon]="faEdit"></fa-icon>  </a>
       </li>
     </ul>
 

@@ -17,6 +17,7 @@ import { QuestionListComponent } from './components/question/question-list/quest
 import { QuestionAddComponent } from './components/question/question-add/question-add.component';
 import { QuestionEditComponent } from './components/question/question-edit/question-edit.component';
 import { ReponseEditComponent } from './components/reponse/reponse-edit/reponse-edit.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -40,7 +41,8 @@ import { ReponseEditComponent } from './components/reponse/reponse-edit/reponse-
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,10 @@ import { Question } from 'src/app/models/question';
 import {QuestionService} from '../../../services/question.service';
 import {ReponseQuestion} from '../../../models/reponse-question';
 import {ReponseService} from '../../../services/reponse.service';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-question-list',
@@ -18,6 +22,10 @@ export class QuestionListComponent implements OnInit {
               private reponseService: ReponseService) {
   }
 
+  faTimesCircle = faTimesCircle;
+  faTrash = faTrash;
+  faEdit = faEdit;
+  faCheck = faCheck;
   isLoading: boolean;
   writeReponse = false;
   questionId: number;
@@ -48,7 +56,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   submitReponse(id: number) {
-    this.reponseToquestion.isOk = this.transformToBooleen(this.reponseToquestion.isOk);
+    this.reponseToquestion.isOk = this.transformToBoolean(this.reponseToquestion.isOk);
     this.reponseToquestion.question = id;
     this.reponseService.postReponseToquestion(this.reponseToquestion, id).subscribe(then => {
       this.questionService.getQuestionsForExam(this.idExam).subscribe((data: Question[]) => {
@@ -68,13 +76,7 @@ export class QuestionListComponent implements OnInit {
     });
 
   }
-  transformToBooleen(value: string|boolean) {
-    if (value === 'Mauvaise réponse'){
-      value = false;
-      return value;
-    } else {
-      value = true;
-      return value;
-    }
+  transformToBoolean(value: string|boolean): boolean {
+    return value !== 'Mauvaise réponse';
   }
 }
