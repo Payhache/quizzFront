@@ -1,0 +1,18 @@
+* {
+  font-size: 20px;
+}
+h2 {
+  font-size: 30px;
+}
+
+li {
+  list-style-type: none;
+}
+.trash, .wrong {
+  color: red;
+  padding: 0 1rem;
+}
+.check {
+  color: green;
+  padding: 0 1rem;
+}

@@ -7,9 +7,11 @@ import { QuestionListComponent } from './components/question/question-list/quest
 import {QuestionAddComponent} from './components/question/question-add/question-add.component';
 import {QuestionEditComponent} from './components/question/question-edit/question-edit.component';
 import {ReponseEditComponent} from './components/reponse/reponse-edit/reponse-edit.component';
+import {AnswerQuizzComponent} from './components/answer-quizz/answer-quizz.component';
 
 
 const routes: Routes = [
+  { path: 'quizz/:id', component: AnswerQuizzComponent },
   { path: 'admin/examen/addquestion/:id', component: QuestionAddComponent },
   { path: 'admin/examen/add', component: ExamenAddComponent },
   { path: 'admin/examen/edit/:id', component: ExamenEditComponent },

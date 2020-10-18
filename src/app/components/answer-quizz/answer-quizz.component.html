@@ -1,0 +1,25 @@
+<ng-container *ngIf="isLoading">
+  <h2> questionnaire en chargement ... En chargement .....</h2>
+</ng-container>
+
+
+<ng-container *ngIf="isNotStarted">
+  <div class="">
+    Regles du jeu : bla bla bla blaa
+    <button (click)="startQuizz()"> commencer le questionnaire</button>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="!isLoading">
+  <ng-container *ngIf="!isNotStarted">
+    <div>
+      <h2>  {{questions[currentquestion].name}} </h2>
+      <ul>
+        <li *ngFor="let reponse of questions[currentquestion].reponses"> {{reponse.name}}</li>
+      </ul>
+      <button (click)="previousQuestion()"> Previous</button>
+      <button (click)="nextQuestion()"> Next</button>
+    </div>
+  </ng-container>
+</ng-container>

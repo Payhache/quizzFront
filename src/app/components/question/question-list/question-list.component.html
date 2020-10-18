@@ -2,7 +2,7 @@
   <h2>En chargement .....</h2>
 </ng-container>
 
-<button [routerLink]="['/admin/examen/addquestion', this.idExam]"> Ajouter une question</button>
+<button class="float-right"[routerLink]="['/admin/examen/addquestion', this.idExam]"> Ajouter une question</button>
 
 <ng-container *ngIf="!isLoading">
   <div *ngFor="let question of this.questions">
@@ -35,10 +35,10 @@
 
     <ul>
       <li *ngFor="let reponse of question.reponses">
-       <span *ngIf="reponse.isOk"> <fa-icon [icon]="faCheck"> </fa-icon> </span>
-       <span *ngIf="!reponse.isOk"> <fa-icon [icon]="faTimesCircle"> </fa-icon> </span>
+       <span *ngIf="reponse.isOk"> <fa-icon  class="check" [icon]="faCheck"> </fa-icon> </span>
+       <span *ngIf="!reponse.isOk"> <fa-icon class="wrong" [icon]="faTimesCircle"> </fa-icon> </span>
         {{reponse.name}}
-        <a (click)="deleteReponse(reponse.id)"> <fa-icon [icon]="faTrash"></fa-icon> </a>
+        <a (click)="deleteReponse(reponse.id)"> <fa-icon class="trash" [icon]="faTrash"></fa-icon> </a>
         <a [routerLink]="['/admin/reponse/edit', reponse.id]"> <fa-icon [icon]="faEdit"></fa-icon>  </a>
       </li>
     </ul>

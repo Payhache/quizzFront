@@ -27,6 +27,7 @@ export class QuestionListComponent implements OnInit {
   faEdit = faEdit;
   faCheck = faCheck;
   isLoading: boolean;
+
   writeReponse = false;
   questionId: number;
   questions: Question[];

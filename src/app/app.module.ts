@@ -18,6 +18,7 @@ import { QuestionAddComponent } from './components/question/question-add/questio
 import { QuestionEditComponent } from './components/question/question-edit/question-edit.component';
 import { ReponseEditComponent } from './components/reponse/reponse-edit/reponse-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AnswerQuizzComponent } from './components/answer-quizz/answer-quizz.component';
 
 
 
@@ -33,6 +34,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     QuestionAddComponent,
     QuestionEditComponent,
     ReponseEditComponent,
+    AnswerQuizzComponent,
   ],
   imports: [
     BrowserModule,
