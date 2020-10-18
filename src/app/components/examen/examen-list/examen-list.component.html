@@ -1,7 +1,9 @@
 <h1>Liste des questionnaires</h1>
-<ng-container *ngIf="isLoading">
-<h2>En chargement ....</h2>
-</ng-container>
+
+  <div *ngIf="isLoading">
+    <app-spinner></app-spinner>
+  </div>
+
 <ng-container *ngIf="!isLoading">
   <table class="table table-striped table-dark w-75 m-auto">
     <thead>
@@ -16,10 +18,10 @@
         <th scope="row">{{ exam.id }}</th>
         <td>{{ exam.name }}</td>
         <td>
-          <button class="btn" [routerLink]="['/quizz/', exam.id]"> Répondre au questionnaire </button>  /
-          <button class="btn" [routerLink]="['/admin/examen', exam.id]"> voir les questions </button>  /
-          <button class="btn" [routerLink]="['/admin/examen/edit', exam.id]"> Editer </button> /
-          <button class="btn" (click)="deleteExamen(exam.id)"> Supprimer </button>
+          <button mat-raised-button color="primary" [routerLink]="['/quizz/', exam.id]"> Répondre au questionnaire </button>  /
+          <button mat-raised-button [routerLink]="['/admin/examen', exam.id]"> voir les questions </button>  /
+          <button mat-raised-button [routerLink]="['/admin/examen/edit', exam.id]"> Editer </button> /
+          <button mat-raised-button (click)="deleteExamen(exam.id)"> Supprimer </button>
         </td>
       </tr>
     </tbody>

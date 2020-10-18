@@ -1,4 +1,7 @@
 <h1> Modifier Question </h1>
+<div *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
 
 <ng-container *ngIf="!isLoading">
   <form #questionForm="ngForm" (ngSubmit)="editQuestion()">

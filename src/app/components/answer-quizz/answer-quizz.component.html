@@ -1,6 +1,6 @@
-<ng-container *ngIf="isLoading">
-  <h2> questionnaire en chargement ... En chargement .....</h2>
-</ng-container>
+<div *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
 
 
 <ng-container *ngIf="isNotStarted">

@@ -1,6 +1,6 @@
-<ng-container *ngIf="isLoading">
-  <h2>En chargement .....</h2>
-</ng-container>
+<div *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
 
 <button class="float-right"[routerLink]="['/admin/examen/addquestion', this.idExam]"> Ajouter une question</button>
 

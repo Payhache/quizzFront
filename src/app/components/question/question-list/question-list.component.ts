@@ -4,6 +4,7 @@ import { Question } from 'src/app/models/question';
 import {QuestionService} from '../../../services/question.service';
 import {ReponseQuestion} from '../../../models/reponse-question';
 import {ReponseService} from '../../../services/reponse.service';
+// fontAwesome
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';

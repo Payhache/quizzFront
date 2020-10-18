@@ -1,4 +1,9 @@
 <h1> Modifier Titre du questionnaire</h1>
+
+<div *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+
 <ng-container *ngIf="!isLoading">
     <form #pcForm="ngForm" (ngSubmit)="editExamen()">
         <label for="examen_name"> Nouveau titre</label>
