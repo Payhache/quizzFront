@@ -3,7 +3,7 @@
 </div>
 
 
-<ng-container *ngIf="isNotStarted">
+<ng-container *ngIf="!isNotStarted">
   <div class="">
     Regles du jeu : bla bla bla blaa
     <button (click)="startQuizz()"> commencer le questionnaire</button>
@@ -12,14 +12,18 @@
 
 
 <ng-container *ngIf="!isLoading">
-  <ng-container *ngIf="!isNotStarted">
-    <div>
-      <h2>  {{questions[currentquestion].name}} </h2>
-      <ul>
-        <li *ngFor="let reponse of questions[currentquestion].reponses"> {{reponse.name}}</li>
-      </ul>
+  <ng-container *ngIf="isNotStarted">
+    <form (ngSubmit)="submitRep()">
+    <label id="{{questions[currentquestion].id}}">  {{questions[currentquestion].name}} </label>
+    <mat-radio-group class="groupRadioReponse">
+      <mat-radio-button class="radioReponse" *ngFor="let reponse of questions[currentquestion].reponses"  [value]="reponse">
+        {{reponse.isOk |json}}
+        {{reponse | json}}
+      </mat-radio-button>
+    </mat-radio-group>
+      <button type="submit">répondre</button>
+    </form>
       <button (click)="previousQuestion()"> Previous</button>
       <button (click)="nextQuestion()"> Next</button>
-    </div>
   </ng-container>
 </ng-container>

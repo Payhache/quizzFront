@@ -3,6 +3,7 @@ import {QuestionService} from '../../services/question.service';
 import {Question} from '../../models/question';
 import {ActivatedRoute} from '@angular/router';
 import {ReponseService} from '../../services/reponse.service';
+import {ReponseQuestion} from '../../models/reponse-question';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class AnswerQuizzComponent implements OnInit {
 
   isLoading: boolean;
   questions: Question[];
+  reponse: ReponseQuestion;
   idExam: number;
   isNotStarted = true;
   currentquestion = 0;
@@ -44,5 +46,8 @@ export class AnswerQuizzComponent implements OnInit {
     if (this.currentquestion !== 0) {
       this.currentquestion--;
     }
+  }
+  submitRep() {
+    console.log(this.questions);
   }
 }

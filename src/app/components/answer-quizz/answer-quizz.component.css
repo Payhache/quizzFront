@@ -1,0 +1,9 @@
+.groupRadioReponse {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radioReponse {
+  margin: 5px;
+}

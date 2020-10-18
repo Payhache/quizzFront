@@ -1,6 +1,6 @@
 
 <div *ngIf="!isLoading">
-  <form #reponseForm="ngForm" (ngSubmit)="submitReponseEdited(reponse)">
+  <form (ngSubmit)="submitReponseEdited(reponse)">
     <label for="reponseQuestion"> Saississez la réponse à ajouter : </label>
     <input type="text" name="reponseQuestion" id="reponseQuestion"  required [(ngModel)]="reponse.name"> <br>
     <label for="isOk"> Est ce la bonne réponse ? : </label>
