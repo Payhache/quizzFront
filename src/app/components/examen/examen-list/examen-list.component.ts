@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Examen } from 'src/app/models/examen';
 import { ExamenService } from 'src/app/services/examen.service';
+// fontAwesome
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faMousePointer } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-examen-list',
@@ -12,6 +17,10 @@ export class ExamenListComponent implements OnInit {
   isLoading: boolean;
 
   examens: Examen[];
+  // Font Awesome
+  faTrashAlt = faTrashAlt;
+  faEdit = faEdit;
+  faMousePointer = faMousePointer;
 
   constructor(private examentService: ExamenService) { }
 

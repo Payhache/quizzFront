@@ -3,16 +3,40 @@
 }
 h2 {
   font-size: 30px;
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-repeat: no-repeat;
+  background-size: 75% 0.2em;
+  background-position: 0 95%;
+  transition: background-size 0.25s ease-in;
+}
+h2:hover {
+  background-size: 100% 88%;
 }
 
 li {
   list-style-type: none;
+  margin-bottom: 0.5rem;
 }
 .trash, .wrong {
   color: red;
   padding: 0 1rem;
+  opacity: 0.5;
 }
 .check {
   color: green;
   padding: 0 1rem;
+  opacity: 0.8;
+}
+
+.container_question {
+  width: 75%;
+  margin: 2rem auto;
+  padding: 1rem;
+  -webkit-box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
+  -moz-box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
+  box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
+}
+
+.btn_question {
+  margin-bottom: 1rem;
 }

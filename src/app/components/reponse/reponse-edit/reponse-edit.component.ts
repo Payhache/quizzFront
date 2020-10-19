@@ -29,9 +29,17 @@ export class ReponseEditComponent implements OnInit {
   }
 
   submitReponseEdited(reponse: ReponseQuestion) {
+    this.reponse.isOk = this.transformToBoolean(reponse.isOk);
+    console.log(this.reponse.isOk);
+    console.log(this.reponse);
     this.reponseService.putReponse(this.reponse).subscribe(() => {
        this.router.navigate(['/admin/examen', this.reponse.question.examen.id]);
      });
   }
+
+  transformToBoolean(value: string|boolean): boolean {
+    return value !== 'Mauvaise réponse';
+  }
+
 
 }

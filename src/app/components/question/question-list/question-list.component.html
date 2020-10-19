@@ -5,12 +5,13 @@
 <button class="float-right"[routerLink]="['/admin/examen/addquestion', this.idExam]"> Ajouter une question</button>
 
 <ng-container *ngIf="!isLoading">
-  <div *ngFor="let question of this.questions">
+  <div class="container_question" *ngFor="let question of this.questions">
+
     <h2>  {{question.name}} </h2>
 
-    <button class="btn btn-primary" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
-    <button class="btn btn-primary" (click)="deleteQuestion(question.id)"> Supprimer question</button>
-    <button class="btn btn-primary" (click)="showFormAddReponse(question.id)"> Ajouter une réponse</button>
+    <button mat-stroked-button color="primary" class="btn_question" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
+    <button mat-stroked-button color="primary" (click)="deleteQuestion(question.id)"> Supprimer question</button>
+    <button mat-stroked-button color="primary" (click)="showFormAddReponse(question.id)"> Ajouter une réponse</button>
 
 
     <!-- ##################### Ajout de la réponse ##################-->

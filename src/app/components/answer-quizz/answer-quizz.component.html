@@ -17,8 +17,7 @@
     <label id="{{questions[currentquestion].id}}">  {{questions[currentquestion].name}} </label>
     <mat-radio-group class="groupRadioReponse">
       <mat-radio-button class="radioReponse" *ngFor="let reponse of questions[currentquestion].reponses"  [value]="reponse">
-        {{reponse.isOk |json}}
-        {{reponse | json}}
+        {{reponse.name}}
       </mat-radio-button>
     </mat-radio-group>
       <button type="submit">répondre</button>

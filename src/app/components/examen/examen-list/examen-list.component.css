@@ -1,1 +1,10 @@
+.trash, .wrong {
+  color: red;
+}
+.check {
+  color: green;
+}
+.see, .trash, .check {
+  padding: 0 0.8rem;
+}
 
