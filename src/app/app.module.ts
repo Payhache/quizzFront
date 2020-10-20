@@ -24,6 +24,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
 import {SpinnerComponent} from './components/parts/spinner/spinner.component';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { Question } from 'src/app/models/question';
 import {QuestionService} from '../../../services/question.service';
 import {ReponseQuestion} from '../../../models/reponse-question';
 import {ReponseService} from '../../../services/reponse.service';
+import {MatDialog} from '@angular/material/dialog';
 // fontAwesome
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +21,8 @@ export class QuestionListComponent implements OnInit {
 
   constructor(private questionService: QuestionService,
               private route: ActivatedRoute,
-              private reponseService: ReponseService) {
+              private reponseService: ReponseService,
+              public dialog: MatDialog) {
   }
 
   faTimesCircle = faTimesCircle;
@@ -81,4 +83,19 @@ export class QuestionListComponent implements OnInit {
   transformToBoolean(value: string|boolean): boolean {
     return value !== 'Mauvaise réponse';
   }
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+  //     width: '250px',
+  //     data: {name: this.name, animal: this.animal}
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     this.animal = result;
+  //   });
+  // }
+
+// }
+
+
 }
