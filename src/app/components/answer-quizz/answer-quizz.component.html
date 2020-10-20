@@ -16,9 +16,14 @@
     <form (ngSubmit)="submitRep()">
     <label id="{{questions[currentquestion].id}}">  {{questions[currentquestion].name}} </label>
     <mat-radio-group class="groupRadioReponse">
-      <mat-radio-button class="radioReponse" *ngFor="let reponse of questions[currentquestion].reponses"  [value]="reponse">
-        {{reponse.name}}
-      </mat-radio-button>
+
+      <ng-container *ngFor="let reponse of questions[currentquestion].reponses">
+        <mat-radio-button class="radioReponse"    [value]="reponse.isOk">
+          {{reponse.name}}
+          {{reponse.isOk | json}}
+        </mat-radio-button>
+      </ng-container>
+
     </mat-radio-group>
       <button type="submit">répondre</button>
     </form>

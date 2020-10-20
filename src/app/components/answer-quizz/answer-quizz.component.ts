@@ -18,10 +18,11 @@ export class AnswerQuizzComponent implements OnInit {
 
   isLoading: boolean;
   questions: Question[];
-  reponse: ReponseQuestion;
+  reponse: ReponseQuestion = new ReponseQuestion();
   idExam: number;
   isNotStarted = true;
   currentquestion = 0;
+
 
   ngOnInit(): void {
     this.idExam = +this.route.snapshot.paramMap.get('id');
@@ -48,6 +49,7 @@ export class AnswerQuizzComponent implements OnInit {
     }
   }
   submitRep() {
+    console.log(this.questions[this.currentquestion].reponses[2].isOk);
     console.log(this.questions);
   }
 }
