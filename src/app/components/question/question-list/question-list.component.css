@@ -15,8 +15,9 @@ h2:hover {
 
 li {
   list-style-type: none;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
+
 .trash, .wrong {
   color: red;
   padding: 0 1rem;
@@ -35,8 +36,24 @@ li {
   -webkit-box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
   -moz-box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
   box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
+  border-radius: 25px;
 }
 
 .btn_question {
   margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+.true, .false {
+  -webkit-box-shadow: -5px 8px 8px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: -5px 8px 8px 0px rgba(0,0,0,0.75);
+  box-shadow: -5px 8px 8px 0px rgba(0,0,0,0.75);
+  opacity: 0.8;
+}
+
+.false {
+  border-left: solid red 4px;
+}
+.true {
+  border-left: solid green 4px;
 }

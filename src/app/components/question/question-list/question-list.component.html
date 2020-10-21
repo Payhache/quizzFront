@@ -9,9 +9,9 @@
 
     <h2>  {{question.name}} </h2>
 
-    <button mat-stroked-button color="primary" class="btn_question" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
-    <button mat-stroked-button color="primary" (click)="deleteQuestion(question.id)"> Supprimer question</button>
-    <button mat-stroked-button color="primary" (click)="showFormAddReponse(question.id)"> Ajouter une réponse</button>
+    <button mat-raised-button  class="btn_question" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
+    <button mat-raised-button  class="btn_question" (click)="deleteQuestion(question.id)"> Supprimer question</button>
+    <button mat-raised-button  class="btn_question" (click)="showFormAddReponse(question.id)"> Ajouter une réponse</button>
 
 
     <!-- ##################### Ajout de la réponse ##################-->
@@ -36,8 +36,8 @@
 
     <ul>
       <li *ngFor="let reponse of question.reponses">
-       <span *ngIf="reponse.isOk"> <fa-icon  class="check" [icon]="faCheck"> </fa-icon> </span>
-       <span *ngIf="!reponse.isOk"> <fa-icon class="wrong" [icon]="faTimesCircle"> </fa-icon> </span>
+       <span class="true" *ngIf="reponse.isOk"> <fa-icon  class="check" [icon]="faCheck"> </fa-icon> </span>
+       <span class="false" *ngIf="!reponse.isOk"> <fa-icon class="wrong" [icon]="faTimesCircle"> </fa-icon> </span>
         {{reponse.name}}
         <a (click)="deleteReponse(reponse.id)"> <fa-icon class="trash" [icon]="faTrash"></fa-icon> </a>
         <a [routerLink]="['/admin/reponse/edit', reponse.id]"> <fa-icon [icon]="faEdit"></fa-icon>  </a>
