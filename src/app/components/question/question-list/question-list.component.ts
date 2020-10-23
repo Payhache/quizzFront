@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Question } from 'src/app/models/question';
+import {Component, OnInit, Inject} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Question} from 'src/app/models/question';
 import {QuestionService} from '../../../services/question.service';
 import {ReponseQuestion} from '../../../models/reponse-question';
 import {ReponseService} from '../../../services/reponse.service';
 import {MatDialog} from '@angular/material/dialog';
 // fontAwesome
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {faCheck} from '@fortawesome/free-solid-svg-icons';
+import {faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+import {ReponseAddComponent} from '../../reponse/reponse-add/reponse-add.component';
+
 
 @Component({
   selector: 'app-question-list',
@@ -37,6 +39,11 @@ export class QuestionListComponent implements OnInit {
   reponseToquestion = new ReponseQuestion();
   idExam: number;
 
+  reponseName: string;
+  reponseValue: boolean;
+  questionName: string;
+  questionDialog: Question;
+
   ngOnInit(): void {
     this.idExam = +this.route.snapshot.paramMap.get('id');
     this.isLoading = true;
@@ -45,6 +52,7 @@ export class QuestionListComponent implements OnInit {
       this.isLoading = false;
     });
   }
+
   deleteQuestion(id: number) {
     this.isLoading = true;
     this.questionService.deleteQuestion(id).subscribe(then => {
@@ -54,6 +62,7 @@ export class QuestionListComponent implements OnInit {
       });
     });
   }
+
   showFormAddReponse(id: number) {
     this.questionId = id;
     this.writeReponse = this.writeReponse === false;
@@ -70,6 +79,7 @@ export class QuestionListComponent implements OnInit {
       });
     });
   }
+
   deleteReponse(id: number) {
     this.isLoading = true;
     this.reponseService.deleteReponse(id).subscribe(then => {
@@ -80,22 +90,39 @@ export class QuestionListComponent implements OnInit {
     });
 
   }
-  transformToBoolean(value: string|boolean): boolean {
+
+  transformToBoolean(value: string | boolean): boolean {
     return value !== 'Mauvaise réponse';
   }
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-  //     width: '250px',
-  //     data: {name: this.name, animal: this.animal}
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     this.animal = result;
-  //   });
-  // }
 
-// }
+  openDialog(question: Question): void {
+    this.questionId = question.id;
+    const dialogRef = this.dialog.open(ReponseAddComponent, {
+      width: '75%',
+      data:
+        {
+          reponseName: this.reponseName,
+          reponseValue: this.reponseValue
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isLoading = true;
+      this.reponseToquestion.question = this.questionId;
+      this.reponseToquestion.name = result.reponseName;
+      if (!result.reponseValue) {
+        this.reponseToquestion.isOk = false;
+      } else {
+        this.reponseToquestion.isOk = true;
+      }
+      this.reponseService.postReponseToquestion(this.reponseToquestion, this.questionId).subscribe(then => {
+        this.questionService.getQuestionsForExam(this.idExam).subscribe((data: Question[]) => {
+          this.questions = data['hydra:member'];
+          this.isLoading = false;
+        });
+      });
+    });
+  }
 
 
 }

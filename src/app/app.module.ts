@@ -17,14 +17,21 @@ import {QuestionListComponent} from './components/question/question-list/questio
 import {QuestionAddComponent} from './components/question/question-add/question-add.component';
 import {QuestionEditComponent} from './components/question/question-edit/question-edit.component';
 import {ReponseEditComponent} from './components/reponse/reponse-edit/reponse-edit.component';
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {AnswerQuizzComponent} from './components/answer-quizz/answer-quizz.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ReponseAddComponent } from './components/reponse/reponse-add/reponse-add.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+// Material imports
 import {MatCardModule} from '@angular/material/card';
-import {SpinnerComponent} from './components/parts/spinner/spinner.component';
+import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {SpinnerComponent} from './components/parts/spinner/spinner.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 @NgModule({
@@ -41,7 +48,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     ReponseEditComponent,
     AnswerQuizzComponent,
     SpinnerComponent,
+    ReponseAddComponent,
   ],
+  entryComponents: [ SpinnerComponent, ReponseAddComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,8 +64,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatProgressSpinnerModule,
     MatCardModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule
   ],
+  exports: [ MatFormFieldModule, MatInputModule ],
   providers: [],
   bootstrap: [AppComponent]
 })
