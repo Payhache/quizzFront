@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../../services/question.service';
 import {Question} from '../../models/question';
 import {ActivatedRoute} from '@angular/router';
@@ -17,7 +17,8 @@ export class AnswerQuizzComponent implements OnInit {
 
   constructor(private  questionService: QuestionService,
               private route: ActivatedRoute,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog) {
+  }
 
   isLoading: boolean;
   questions: Question[];
@@ -37,8 +38,9 @@ export class AnswerQuizzComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
-    this.dialog.open(SpinnerComponent);
+
+  startQuizz() {
+    this.isNotStarted = false;
   }
 
   nextQuestion() {
@@ -46,11 +48,13 @@ export class AnswerQuizzComponent implements OnInit {
       this.currentquestion++;
     }
   }
+
   previousQuestion() {
     if (this.currentquestion !== 0) {
       this.currentquestion--;
     }
   }
+
   submitRep() {
     console.log(this.questions[this.currentquestion].reponses[2].isOk);
     console.log(this.questions);
