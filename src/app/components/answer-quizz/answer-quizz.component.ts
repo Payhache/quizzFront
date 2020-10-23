@@ -4,6 +4,8 @@ import {Question} from '../../models/question';
 import {ActivatedRoute} from '@angular/router';
 import {ReponseService} from '../../services/reponse.service';
 import {ReponseQuestion} from '../../models/reponse-question';
+import {MatDialog} from '@angular/material/dialog';
+import {SpinnerComponent} from '../parts/spinner/spinner.component';
 
 
 @Component({
@@ -14,7 +16,8 @@ import {ReponseQuestion} from '../../models/reponse-question';
 export class AnswerQuizzComponent implements OnInit {
 
   constructor(private  questionService: QuestionService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              public dialog: MatDialog) { }
 
   isLoading: boolean;
   questions: Question[];
@@ -34,8 +37,8 @@ export class AnswerQuizzComponent implements OnInit {
     });
   }
 
-  startQuizz() {
-    this.isNotStarted = false;
+  openDialog(): void {
+    this.dialog.open(SpinnerComponent);
   }
 
   nextQuestion() {

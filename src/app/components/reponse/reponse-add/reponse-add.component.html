@@ -1,0 +1,11 @@
+<h2 mat-dialog-title> Ajout d'une réponse : </h2>
+<mat-form-field>
+  <mat-label> nouvelle réponse</mat-label>
+  <input matInput [(ngModel)]="data.reponseName">
+</mat-form-field>
+<br>
+<mat-checkbox class="example-margin" [(ngModel)]="data.reponseValue"> c'est la bonne réponse </mat-checkbox>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()"> Annuler </button>
+  <button mat-button [mat-dialog-close]="data">Ok</button>
+</div>

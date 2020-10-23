@@ -9,30 +9,9 @@
 
     <h2>  {{question.name}} </h2>
 
-    <button mat-raised-button  class="btn_question" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
-    <button mat-raised-button  class="btn_question" (click)="deleteQuestion(question.id)"> Supprimer question</button>
-    <button mat-raised-button  class="btn_question" (click)="showFormAddReponse(question.id)"> Ajouter une réponse</button>
-
-
-    <!-- ##################### Ajout de la réponse ##################-->
-    <div *ngIf="question.id === questionId">
-      <div *ngIf="writeReponse">
-        <form #reponseForm="ngForm" (ngSubmit)="submitReponse(question.id)">
-          <label for="reponseQuestion"> Saississez la réponse à ajouter : </label>
-          <input type="text" name="reponseQuestion" id="reponseQuestion" required [(ngModel)]="reponseToquestion.name">
-          <br>
-          <label for="isOk"> Est ce la bonne réponse ? : </label>
-          <select class="w-25 custom-select mr-sm-2" id="isOk" required [(ngModel)]="reponseToquestion.isOk"
-                  name="isOk">
-            <option> Mauvaise réponse</option>
-            <option> Bonne réponse</option>
-          </select>
-          <br>
-          <button type="submit">Ajouter la réponse</button>
-        </form>
-      </div>
-    </div>
-    <!-- ##################### FIN Ajout de la réponse ##################-->
+    <button mat-stroked-button color="primary" class="btn_question" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
+    <button mat-stroked-button color="primary" (click)="deleteQuestion(question.id)"> Supprimer question</button>
+    <button mat-stroked-button color="primary" (click)="openDialog(question)"> Ajouter une réponse</button>
 
     <ul>
       <li *ngFor="let reponse of question.reponses">

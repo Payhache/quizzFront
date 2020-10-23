@@ -3,16 +3,16 @@
 </div>
 
 
-<ng-container *ngIf="!isNotStarted">
+<ng-container *ngIf="isNotStarted">
   <div class="">
     Regles du jeu : bla bla bla blaa
-    <button (click)="startQuizz()"> commencer le questionnaire</button>
+    <button mat-raised-button (click)="openDialog()"> commencer le questionnaire</button>
   </div>
 </ng-container>
 
 
 <ng-container *ngIf="!isLoading">
-  <ng-container *ngIf="isNotStarted">
+  <ng-container *ngIf="!isNotStarted">
     <form (ngSubmit)="submitRep()">
     <label id="{{questions[currentquestion].id}}">  {{questions[currentquestion].name}} </label>
     <mat-radio-group class="groupRadioReponse">
