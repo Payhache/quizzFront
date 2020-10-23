@@ -63,23 +63,6 @@ export class QuestionListComponent implements OnInit {
     });
   }
 
-  showFormAddReponse(id: number) {
-    this.questionId = id;
-    this.writeReponse = this.writeReponse === false;
-  }
-
-  submitReponse(id: number) {
-    this.reponseToquestion.isOk = this.transformToBoolean(this.reponseToquestion.isOk);
-    this.reponseToquestion.question = id;
-    this.reponseService.postReponseToquestion(this.reponseToquestion, id).subscribe(then => {
-      this.questionService.getQuestionsForExam(this.idExam).subscribe((data: Question[]) => {
-        this.questions = data['hydra:member'];
-        this.writeReponse = false;
-        this.isLoading = false;
-      });
-    });
-  }
-
   deleteReponse(id: number) {
     this.isLoading = true;
     this.reponseService.deleteReponse(id).subscribe(then => {
@@ -107,20 +90,20 @@ export class QuestionListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.isLoading = true;
-      this.reponseToquestion.question = this.questionId;
-      this.reponseToquestion.name = result.reponseName;
-      if (!result.reponseValue) {
-        this.reponseToquestion.isOk = false;
-      } else {
-        this.reponseToquestion.isOk = true;
-      }
-      this.reponseService.postReponseToquestion(this.reponseToquestion, this.questionId).subscribe(then => {
-        this.questionService.getQuestionsForExam(this.idExam).subscribe((data: Question[]) => {
-          this.questions = data['hydra:member'];
-          this.isLoading = false;
+      if (result) {
+        this.reponseToquestion.question = this.questionId;
+        this.reponseToquestion.name = result.reponseName;
+        if (!result.reponseValue) {
+          this.reponseToquestion.isOk = false;
+        } else {
+          this.reponseToquestion.isOk = true;
+        }
+        this.reponseService.postReponseToquestion(this.reponseToquestion, this.questionId).subscribe(then => {
+          this.questionService.getQuestionsForExam(this.idExam).subscribe((data: Question[]) => {
+            this.questions = data['hydra:member'];
+          });
         });
-      });
+      }
     });
   }
 
