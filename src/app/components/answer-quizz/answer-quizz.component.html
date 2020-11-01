@@ -3,7 +3,7 @@
 </div>
 
 
-<ng-container *ngIf="!isNotStarted">
+<ng-container *ngIf="isNotStarted">
   <div class="">
     Regles du jeu : bla bla bla blaa
     <button mat-raised-button (click)="startQuizz()"> commencer le questionnaire</button>
@@ -12,22 +12,28 @@
 
 
 <ng-container *ngIf="!isLoading">
-  <ng-container *ngIf="isNotStarted">
-    <form (ngSubmit)="submitRep()">
-    <label id="{{questions[currentquestion].id}}">  {{questions[currentquestion].name}} </label>
-    <mat-radio-group class="groupRadioReponse">
+  <ng-container *ngIf="!isNotStarted">
+    <p id="{{question.id}}">  {{question.name}} </p>
+    <mat-radio-group class="groupRadioReponse"  (change)="test($event)">
 
-      <ng-container *ngFor="let reponse of questions[currentquestion].reponses">
-        <mat-radio-button class="radioReponse"    [value]="reponse.isOk">
-          {{reponse.name}}
-          {{reponse.isOk | json}}
-        </mat-radio-button>
-      </ng-container>
+      <mat-radio-button class="radioReponse"
+                        *ngFor="let reponseQuestion of question.reponses"
+                        name="{{question.id}}"
+                        [value]="reponseQuestion">
+        {{reponseQuestion.name}}
 
+      </mat-radio-button>
     </mat-radio-group>
-      <button type="submit">répondre</button>
-    </form>
-      <button (click)="previousQuestion()"> Previous</button>
-      <button (click)="nextQuestion()"> Next</button>
+    <button (click)="previousQuestion()"> Previous</button>
+
+    <ng-container *ngIf="!isDisabled">
+      <button (click)="validateReponse()">répondre</button>
+    </ng-container>
+
+    <ng-container *ngIf="isDisabled">
+      <button disabled > Réponse soumise </button>
+    </ng-container>
+
+    <button (click)="nextQuestion()"> Next</button>
   </ng-container>
 </ng-container>

@@ -1,7 +1,7 @@
  import { Question } from './question';
  import {Examen} from './examen';
 
-export class ReponseQuestion {
+ export class ReponseQuestion {
     id: number;
     name: string;
     isOk: boolean;

@@ -2,10 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../../services/question.service';
 import {Question} from '../../models/question';
 import {ActivatedRoute} from '@angular/router';
-import {ReponseService} from '../../services/reponse.service';
-import {ReponseQuestion} from '../../models/reponse-question';
-import {MatDialog} from '@angular/material/dialog';
-import {SpinnerComponent} from '../parts/spinner/spinner.component';
+import {MatRadioChange} from '@angular/material/radio';
 
 
 @Component({
@@ -16,16 +13,19 @@ import {SpinnerComponent} from '../parts/spinner/spinner.component';
 export class AnswerQuizzComponent implements OnInit {
 
   constructor(private  questionService: QuestionService,
-              private route: ActivatedRoute,
-              public dialog: MatDialog) {
+              private route: ActivatedRoute) {
   }
 
   isLoading: boolean;
   questions: Question[];
-  reponse: ReponseQuestion = new ReponseQuestion();
+  question: Question;
   idExam: number;
   isNotStarted = true;
+  isGoodAnswer: boolean;
+  reponseQuestionSubmited: number[] = [];
+  isDisabled = false;
   currentquestion = 0;
+  scoreExam = 0;
 
 
   ngOnInit(): void {
@@ -33,7 +33,6 @@ export class AnswerQuizzComponent implements OnInit {
     this.isLoading = true;
     this.questionService.getQuestionsForExam(this.idExam).subscribe((data) => {
       this.questions = data['hydra:member'];
-      console.log(this.questions);
       this.isLoading = false;
     });
   }
@@ -41,22 +40,45 @@ export class AnswerQuizzComponent implements OnInit {
 
   startQuizz() {
     this.isNotStarted = false;
+    this.question = this.questions[0];
   }
 
-  nextQuestion() {
+  nextQuestion(): Question {
     if (this.currentquestion !== this.questions.length - 1) {
       this.currentquestion++;
+      this.question = this.questions[this.currentquestion];
+      this.isDisabled = this.checkNumberInArray(this.question.id);
+      return this.question;
     }
   }
 
-  previousQuestion() {
+  previousQuestion(): Question {
     if (this.currentquestion !== 0) {
       this.currentquestion--;
+      this.question = this.questions[this.currentquestion];
+      this.isDisabled = this.checkNumberInArray(this.question.id);
+      return this.question;
     }
   }
 
-  submitRep() {
-    console.log(this.questions[this.currentquestion].reponses[2].isOk);
-    console.log(this.questions);
+  test(mrChange: MatRadioChange) {
+    this.isGoodAnswer = mrChange.value.isOk;
   }
+
+  validateReponse() {
+    this.reponseQuestionSubmited.push(this.question.id);
+    if (this.isGoodAnswer) {
+      this.scoreExam++;
+    }
+    if (this.checkNumberInArray(this.question.id)) {
+      this.isDisabled = true;
+    }
+    console.log(this.scoreExam);
+  }
+
+  checkNumberInArray(numberTofind: number) {
+    return this.reponseQuestionSubmited.includes(numberTofind);
+  }
+
+
 }

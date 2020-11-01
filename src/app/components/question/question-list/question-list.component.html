@@ -2,16 +2,16 @@
   <app-spinner></app-spinner>
 </div>
 
-<button class="float-right"[routerLink]="['/admin/examen/addquestion', this.idExam]"> Ajouter une question</button>
+<button class="float-left" mat-raised-button color="accent" [routerLink]="['/admin/examen/addquestion', this.idExam]"> Ajouter une question</button>
 
 <ng-container *ngIf="!isLoading">
   <div class="container_question" *ngFor="let question of this.questions">
 
     <h2>  {{question.name}} </h2>
 
-    <button mat-stroked-button color="primary" class="btn_question" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
-    <button mat-stroked-button color="primary" (click)="deleteQuestion(question.id)"> Supprimer question</button>
-    <button mat-stroked-button color="primary" (click)="openDialog(question)"> Ajouter une réponse</button>
+    <button mat-raised-button color="primary" class="btn_question" [routerLink]="['/admin/question/edit', question.id]"> Editer question</button>
+    <button mat-raised-button color="warn" class="btn_question" (click)="deleteQuestion(question.id)"> Supprimer question</button>
+    <button mat-raised-button color="accent"  class="btn_question float-right" (click)="openDialog(question)"> Ajouter une réponse</button>
 
     <ul>
       <li *ngFor="let reponse of question.reponses">
