@@ -2,38 +2,57 @@
   <app-spinner></app-spinner>
 </div>
 
+<div *ngIf="!isLoading">
+  <ng-container *ngIf="isNotStarted">
+    <div class="container_consignes">
+      <h1> Consigne du questionnaire : </h1>
+      <div class="consignes">
+        <ul>
+          <li> Il n'y a qu'une seule bonne réponse par question</li>
+          <li> Une fois répondu vous ne pouvez pas changer votre réponse</li>
+          <li> Pour réussir votre habilitation vous devez avoir un taux de bonne réponse supérieur à 80%</li>
+          <li> Ce questionnaire n'est pas chronométré</li>
+          <li> Aucun support n'est autorisé</li>
+          <li> Une mauvaise réponse n'apporte pas de malus</li>
+        </ul>
+      </div>
 
-<ng-container *ngIf="isNotStarted">
-  <div class="">
-    Regles du jeu : bla bla bla blaa
-    <button mat-raised-button (click)="startQuizz()"> commencer le questionnaire</button>
-  </div>
-</ng-container>
+      <button class="start_button" mat-raised-button color="warn" (click)="startQuizz()"> commencer le questionnaire
+      </button>
+    </div>
+  </ng-container>
+</div>
 
 
 <ng-container *ngIf="!isLoading">
   <ng-container *ngIf="!isNotStarted">
-    <p id="{{question.id}}">  {{question.name}} </p>
-    <mat-radio-group class="groupRadioReponse"  (change)="test($event)">
+    <div class="container_question">
+      <p class="question_sentence" id="{{question.id}}">  {{question.name}} </p>
+      <mat-radio-group class="groupRadioReponse" (change)="choice($event)">
 
-      <mat-radio-button class="radioReponse"
-                        *ngFor="let reponseQuestion of question.reponses"
-                        name="{{question.id}}"
-                        [value]="reponseQuestion">
-        {{reponseQuestion.name}}
+        <mat-radio-button class="radioReponse"
+                          *ngFor="let reponseQuestion of question.reponses"
+                          name="{{question.id}}"
+                          [value]="reponseQuestion">
+          {{reponseQuestion.name}}
 
-      </mat-radio-button>
-    </mat-radio-group>
-    <button (click)="previousQuestion()"> Previous</button>
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="buttons_quizz">
 
-    <ng-container *ngIf="!isDisabled">
-      <button (click)="validateReponse()">répondre</button>
-    </ng-container>
 
-    <ng-container *ngIf="isDisabled">
-      <button disabled > Réponse soumise </button>
-    </ng-container>
+        <button (click)="previousQuestion()" mat-raised-button color="primary"> Précédent</button>
 
-    <button (click)="nextQuestion()"> Next</button>
+        <ng-container *ngIf="!isDisabled">
+          <button (click)="validateReponse()" mat-raised-button color="accent"> Soumettre la réponse</button>
+        </ng-container>
+
+        <ng-container *ngIf="isDisabled">
+          <button disabled mat-raised-button> Réponse soumise</button>
+        </ng-container>
+
+        <button (click)="nextQuestion()" mat-raised-button color="primary"> Suivant</button>
+      </div>
+    </div>
   </ng-container>
 </ng-container>

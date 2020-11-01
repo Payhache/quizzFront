@@ -31,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SpinnerComponent} from './components/parts/spinner/spinner.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UserListComponent } from './components/user/user-list/user-list.component';
 
 
 
@@ -49,6 +50,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AnswerQuizzComponent,
     SpinnerComponent,
     ReponseAddComponent,
+    UserListComponent,
   ],
   entryComponents: [ SpinnerComponent, ReponseAddComponent ],
   imports: [

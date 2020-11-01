@@ -61,8 +61,8 @@ export class AnswerQuizzComponent implements OnInit {
     }
   }
 
-  test(mrChange: MatRadioChange) {
-    this.isGoodAnswer = mrChange.value.isOk;
+  choice(radioSelected: MatRadioChange) {
+    this.isGoodAnswer = radioSelected.value.isOk;
   }
 
   validateReponse() {

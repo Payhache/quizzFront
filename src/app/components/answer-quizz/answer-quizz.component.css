@@ -7,3 +7,31 @@
 .radioReponse {
   margin: 5px;
 }
+
+.container_question, .container_consignes  {
+  width: 75%;
+  margin: 6rem auto;
+  padding: 1rem;
+  -webkit-box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
+  -moz-box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
+  box-shadow: 9px 13px 28px -2px rgba(0,0,0,0.68);
+  border-radius: 25px;
+}
+.container_consignes {
+  margin-top: 5rem;
+  width: 50%;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+
+button {
+  margin-right: 3rem;
+}
+
+.question_sentence {
+  font-size: 1.5rem;
+}
+
+.groupRadioReponse {
+  margin: 3rem;
+}
