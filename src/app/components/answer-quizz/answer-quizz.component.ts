@@ -73,7 +73,9 @@ export class AnswerQuizzComponent implements OnInit {
     if (this.checkNumberInArray(this.question.id)) {
       this.isDisabled = true;
     }
-    console.log(this.scoreExam);
+    if (this.reponseQuestionSubmited.length === this.questions.length) {
+      alert(`Examen finit tu as obtenu ${this.scoreExam}`);
+    }
   }
 
   checkNumberInArray(numberTofind: number) {

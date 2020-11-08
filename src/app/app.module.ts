@@ -32,6 +32,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SpinnerComponent} from './components/parts/spinner/spinner.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { UserListComponent } from './components/user/user-list/user-list.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -51,6 +52,7 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
     SpinnerComponent,
     ReponseAddComponent,
     UserListComponent,
+    LoginComponent,
   ],
   entryComponents: [ SpinnerComponent, ReponseAddComponent ],
   imports: [
