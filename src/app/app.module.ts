@@ -33,6 +33,8 @@ import {SpinnerComponent} from './components/parts/spinner/spinner.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { LoginComponent } from './components/login/login.component';
+import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import {AuthGuard} from './guards/auth.guard';
 
 
 
@@ -61,6 +63,7 @@ import { LoginComponent } from './components/login/login.component';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    JwtModule.forRoot({}),
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
@@ -75,7 +78,9 @@ import { LoginComponent } from './components/login/login.component';
     MatCheckboxModule
   ],
   exports: [ MatFormFieldModule, MatInputModule ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

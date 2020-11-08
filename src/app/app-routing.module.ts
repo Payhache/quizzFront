@@ -9,6 +9,7 @@ import {QuestionEditComponent} from './components/question/question-edit/questio
 import {ReponseEditComponent} from './components/reponse/reponse-edit/reponse-edit.component';
 import {AnswerQuizzComponent} from './components/answer-quizz/answer-quizz.component';
 import {LoginComponent} from './components/login/login.component';
+import {AuthGuard} from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
   {path: 'admin/reponse/edit/:id', component: ReponseEditComponent},
   {path: 'admin/question/edit/:id', component: QuestionEditComponent},
 
-  {path: 'admin', component: HomeAdminComponent}
+  {path: 'admin', component: HomeAdminComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
