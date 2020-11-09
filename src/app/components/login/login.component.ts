@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+
     this.authService.login(this.form).subscribe(
       data => {
         this.tokenStorage.saveToken(data.token);
         this.authService.saveUser(data.token).subscribe(then => {
-          alert('je suis la');
           this.tokenStorage.saveCurrentUser(then);
           this.router.navigate(['/admin']);
         });

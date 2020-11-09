@@ -20,6 +20,7 @@ import {ReponseEditComponent} from './components/reponse/reponse-edit/reponse-ed
 import {AnswerQuizzComponent} from './components/answer-quizz/answer-quizz.component';
 import { ReponseAddComponent } from './components/reponse/reponse-add/reponse-add.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+
 // Material imports
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -35,6 +36,11 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { LoginComponent } from './components/login/login.component';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import {AuthGuard} from './guards/auth.guard';
+import {authInterceptorProviders} from './helpers/auth.interceptor';
+
+export function getToken() {
+  return localStorage.getItem('auth-token');
+}
 
 
 
@@ -63,7 +69,9 @@ import {AuthGuard} from './guards/auth.guard';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    JwtModule.forRoot({}),
+    JwtModule.forRoot({ config: {
+      tokenGetter: getToken
+      }}),
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
@@ -79,7 +87,8 @@ import {AuthGuard} from './guards/auth.guard';
   ],
   exports: [ MatFormFieldModule, MatInputModule ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
