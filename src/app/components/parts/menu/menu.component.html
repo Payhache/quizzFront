@@ -3,7 +3,13 @@
       <img src="https://kaksidesign.com/wp-content/uploads/4.4logo2-chu.jpg" width="50" height="50" class="d-inline-block align-top" alt="">
       <span>Laboratoire de Saint Etienne</span>
     </a>
-  <a  class="btn btn-outline-success m-2 ml-auto text-light text-right" routerLink=""> Afficher les utilisateurs </a>
-  <a  class="btn btn-outline-success m-2  text-light text-right" routerLink="admin"> Afficher les questionnaires </a>
-  </nav>
+  <ng-container *ngIf="isAdmin">
+    <div class="container">
+      <a  class="btn btn-outline-success  ml-auto text-light text-right"> Mes résultats </a>
+      <a  class="btn btn-outline-success ml-auto text-light text-right" routerLink=""> Afficher les utilisateurs </a>
+      <a  class="btn btn-outline-success ml-auto text-light text-right" routerLink="admin"> Afficher les questionnaires </a>
+    </div>
+  </ng-container>
+  <p class="ml-auto text-light text-right"> Bonjour {{ currentUser.username }} </p>
+</nav>
 

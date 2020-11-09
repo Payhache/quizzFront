@@ -22,7 +22,9 @@ const routes: Routes = [
   {path: 'admin/reponse/edit/:id', component: ReponseEditComponent},
   {path: 'admin/question/edit/:id', component: QuestionEditComponent},
 
-  {path: 'admin', component: HomeAdminComponent, canActivate: [AuthGuard]}
+  {path: 'admin', component: HomeAdminComponent, canActivate: [AuthGuard]},
+
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

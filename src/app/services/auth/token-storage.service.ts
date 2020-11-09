@@ -25,4 +25,12 @@ export class TokenStorageService {
   getToken(): string {
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
+
+  getUserToken(): string {
+    return window.sessionStorage.getItem(USER_KEY);
+  }
+
+  public getUser() {
+    return JSON.parse(sessionStorage.getItem(USER_KEY));
+  }
 }

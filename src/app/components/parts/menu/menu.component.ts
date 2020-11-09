@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TokenStorageService} from '../../../services/auth/token-storage.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  isAdmin = false;
+  currentUser: any;
+
+
+  constructor(private tokenService: TokenStorageService) {
+  }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenService.getUser();
+    if (this.currentUser.roles.includes('ROLE_ADMIN')){
+      this.isAdmin = true;
+    }
   }
 
 }

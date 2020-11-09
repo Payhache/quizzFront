@@ -20,6 +20,7 @@
       <th scope="row">{{ exam.id }}</th>
       <td>{{ exam.name }}</td>
       <td class="actions">
+        <ng-container *ngIf="isAdmin">
         <button mat-raised-button class="mr-3" [routerLink]="['/admin/examen', exam.id]"> voir les questions
           <fa-icon class="see" [icon]="faMousePointer"></fa-icon>
         </button>
@@ -29,10 +30,10 @@
         <button mat-raised-button class="mr-3" (click)="deleteExamen(exam.id)"> Supprimer
           <fa-icon class="trash" [icon]="faTrashAlt"></fa-icon>
         </button>
+        </ng-container>
         <button mat-raised-button color="primary" class="mr-3" [routerLink]="['/quizz/', exam.id]"> Répondre au
           questionnaire
         </button>
-
       </td>
     </tr>
     </tbody>
