@@ -1,7 +1,6 @@
 <div *ngIf="isLoading">
   <app-spinner></app-spinner>
 </div>
-<app-menu></app-menu>
 
 <ng-container *ngIf="!isLoading">
   <table class="table table-striped table-dark">
@@ -11,7 +10,7 @@
       <th scope="col"> Utilisateurs </th>
       <th scope="col"> Role </th>
       <th scope="col" class="add_exam">
-        <button class="link_add_exam" mat-raised-button color="accent" [routerLink]="['/admin/examen/add']"> Ajouter un
+        <button class="link_add_exam" mat-raised-button color="accent" (click)="openDialog()"> Ajouter un
           Utilisateur
         </button>
       </th>
@@ -29,7 +28,7 @@
           <button mat-raised-button class="mr-3" [routerLink]="['/admin/examen/edit', user.id]">
             <fa-icon class="check" [icon]="faEdit"></fa-icon>
           </button>
-          <button mat-raised-button class="mr-3" >
+          <button mat-raised-button class="mr-3" (click)="deleteUser(user.id)">
             <fa-icon class="trash" [icon]="faTrashAlt"></fa-icon>
           </button>
       </td>

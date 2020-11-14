@@ -1,0 +1,21 @@
+<h2 mat-dialog-title> Ajout d'un utilisateur : </h2>
+<mat-form-field class="username">
+  <mat-label class="label_reponse"> Nom utilisateur : </mat-label>
+  <input matInput
+            [(ngModel)]="data.userName"
+
+  >
+</mat-form-field>
+<br>
+<mat-form-field  class="password">
+  <mat-label class="label_reponse"  > Mot de passe : </mat-label>
+  <input matInput
+         [(ngModel)]="data.password"
+
+  >
+</mat-form-field>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary"  [mat-dialog-close]="data"> Ajouter </button>
+  <button mat-raised-button color="warn"  (click)="onNoClick()"> Annuler</button>
+</div>

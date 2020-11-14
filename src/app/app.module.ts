@@ -18,7 +18,7 @@ import {QuestionAddComponent} from './components/question/question-add/question-
 import {QuestionEditComponent} from './components/question/question-edit/question-edit.component';
 import {ReponseEditComponent} from './components/reponse/reponse-edit/reponse-edit.component';
 import {AnswerQuizzComponent} from './components/answer-quizz/answer-quizz.component';
-import { ReponseAddComponent } from './components/reponse/reponse-add/reponse-add.component';
+import { ReponseAddComponent} from './components/reponse/reponse-add/reponse-add.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 // Material imports
@@ -27,21 +27,21 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SpinnerComponent} from './components/parts/spinner/spinner.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { UserListComponent } from './components/user/user-list/user-list.component';
-import { LoginComponent } from './components/login/login.component';
+import {UserListComponent} from './components/user/user-list/user-list.component';
+import {LoginComponent} from './components/login/login.component';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import {AuthGuard} from './guards/auth.guard';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
+import {UserAddComponent} from './components/user/user-add/user-add.component';
 
 export function getToken() {
   return localStorage.getItem('auth-token');
 }
-
 
 
 @NgModule({
@@ -61,17 +61,24 @@ export function getToken() {
     ReponseAddComponent,
     UserListComponent,
     LoginComponent,
+    UserAddComponent,
   ],
-  entryComponents: [ SpinnerComponent, ReponseAddComponent ],
+  entryComponents: [
+    SpinnerComponent,
+    ReponseAddComponent,
+    UserAddComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    JwtModule.forRoot({ config: {
-      tokenGetter: getToken
-      }}),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: getToken
+      }
+    }),
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
@@ -85,7 +92,7 @@ export function getToken() {
     MatSelectModule,
     MatCheckboxModule
   ],
-  exports: [ MatFormFieldModule, MatInputModule ],
+  exports: [MatFormFieldModule, MatInputModule],
   providers: [
     AuthGuard,
     authInterceptorProviders

@@ -15,14 +15,14 @@ import {UserListComponent} from './components/user/user-list/user-list.component
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'quizz/:id', component: AnswerQuizzComponent, canActivate: [AuthGuard]},
-  {path: 'admin/examen/addquestion/:id', component: QuestionAddComponent, canActivate: [AuthGuard]},
-  {path: 'admin/users', component: UserListComponent, canActivate: [AuthGuard]},
-  {path: 'admin/examen/add', component: ExamenAddComponent, canActivate: [AuthGuard]},
-  {path: 'admin/examen/edit/:id', component: ExamenEditComponent, canActivate: [AuthGuard]},
-  {path: 'admin/examen/:id', component: QuestionListComponent, canActivate: [AuthGuard]},
-  {path: 'admin/reponse/edit/:id', component: ReponseEditComponent, canActivate: [AuthGuard]},
-  {path: 'admin/question/edit/:id', component: QuestionEditComponent, canActivate: [AuthGuard]},
+  {path: 'quizz/:id', component: AnswerQuizzComponent},
+  {path: 'admin/examen/addquestion/:id', component: QuestionAddComponent},
+  {path: 'admin/users', component: UserListComponent},
+  {path: 'admin/examen/add', component: ExamenAddComponent},
+  {path: 'admin/examen/edit/:id', component: ExamenEditComponent},
+  {path: 'admin/examen/:id', component: QuestionListComponent},
+  {path: 'admin/reponse/edit/:id', component: ReponseEditComponent},
+  {path: 'admin/question/edit/:id', component: QuestionEditComponent},
 
   {path: 'admin', component: HomeAdminComponent, canActivate: [AuthGuard]},
 
