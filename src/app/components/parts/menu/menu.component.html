@@ -6,8 +6,8 @@
   <ng-container *ngIf="isAdmin">
     <div class="container">
       <a  class="btn btn-outline-success  ml-auto text-light text-right"> Mes résultats </a>
-      <a  class="btn btn-outline-success ml-auto text-light text-right" routerLink=""> Afficher les utilisateurs </a>
-      <a  class="btn btn-outline-success ml-auto text-light text-right" routerLink="admin"> Afficher les questionnaires </a>
+      <a  class="btn btn-outline-success ml-auto text-light text-right" routerLink="/admin/users"> Afficher les utilisateurs </a>
+      <a  class="btn btn-outline-success ml-auto text-light text-right" routerLink="/admin"> Afficher les questionnaires </a>
     </div>
   </ng-container>
   <p class="ml-auto text-light text-right"> Bonjour {{ currentUser.username }} </p>

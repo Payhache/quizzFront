@@ -1,17 +1,19 @@
-<p>login works!</p>
-
 <div class="login_container">
-  <form (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label> Login</mat-label>
-    <input matInput name="loggin" id="loggin" required [(ngModel)]="form.username">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label> Mot de passe</mat-label>
-    <input matInput name="password" id="password" required [(ngModel)]="form.password">
-  </mat-form-field>
-    <br>
-    <button mat-raised-button type="submit" color="primary"> Se connecter</button>
-  </form>
+  <div class="login">
+    <h1> Plateforme d'évaluation pour les habilitations. Laboratoire Saint Etienne</h1>
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label> Login</mat-label>
+        <input matInput name="loggin" id="loggin" required [(ngModel)]="form.username">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label> Mot de passe</mat-label>
+        <input matInput name="password" id="password" required [(ngModel)]="form.password">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit" color="primary"> Se connecter </button>
+    </form>
+  </div>
 </div>
+
