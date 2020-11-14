@@ -68,11 +68,7 @@ export class UserListComponent implements OnInit {
         this.user.username = result.userName;
         this.user.password = result.password;
         this.user.roles = 'ROLE_USER';
-        this.userService.postUser(this.user).subscribe( then => {
-          this.userService.getAllUsers().subscribe((dataUser) => {
-            this.users = dataUser['hydra:member'];
-          });
-        });
+        this.userService.postUser(this.user).subscribe();
       }
     });
   }

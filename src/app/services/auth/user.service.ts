@@ -35,8 +35,7 @@ export class UserService {
 
   postUser(user: User): Observable<User> {
     return this.http
-      .post<User>(API_REGISTER, user, this.httpOptions)
-      .pipe(retry(1), catchError(this.handleError));
+      .post<User>(API_REGISTER, user, this.httpOptions);
   }
 
   // En cas d'erreure de communication avec le serveur
