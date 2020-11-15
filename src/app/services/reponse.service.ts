@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core'
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/internal/operators';
-import { Observable, throwError } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpHeaders, HttpClient} from '@angular/common/http';
+import {catchError, retry} from 'rxjs/internal/operators';
+import {Observable, throwError} from 'rxjs';
 import {Question} from '../models/question';
 import {ReponseQuestion} from '../models/reponse-question';
 
@@ -15,11 +15,15 @@ export class ReponseService {
       'Content-Type': 'application/json'
     })
   };
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
+
   getReponsesForQuestion(id: number): Observable<ReponseQuestion[]> {
-    return this.http.get<ReponseQuestion[]>(this.apiURL + '?question.id=' + id )
+    return this.http.get<ReponseQuestion[]>(this.apiURL + '?question.id=' + id)
       .pipe(retry(1), catchError(this.handleError));
   }
+
   postReponseToquestion(reponseQuestion: ReponseQuestion, id: number): Observable<ReponseQuestion> {
     return this.http
       .post<ReponseQuestion>(this.apiURL + '?question.id=' + id, reponseQuestion, this.httpOptions)
@@ -27,16 +31,16 @@ export class ReponseService {
 
   }
 
-  deleteReponse(id: number): Observable<ReponseQuestion>{
+  deleteReponse(id: number): Observable<ReponseQuestion> {
     return this.http
-      .delete<ReponseQuestion>(this.apiURL  + '/' + id, this.httpOptions)
+      .delete<ReponseQuestion>(this.apiURL + '/' + id, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
 
   }
 
-  getOneReponse(id: number): Observable<ReponseQuestion>{
+  getOneReponse(id: number): Observable<ReponseQuestion> {
     return this.http
-      .put<ReponseQuestion>(this.apiURL  + '/' + id, this.httpOptions)
+      .put<ReponseQuestion>(this.apiURL + '/' + id, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
 
@@ -51,20 +55,15 @@ export class ReponseService {
         picture2: reponse.picture2,
         picture3: reponse.picture3,
         question: reponse.question.id
-      } , this.httpOptions)
+      }, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
 
-  // EN cas d'erreure de communication avec le serveur
   handleError(error) {
-    // déclaration d'une variable vide pour y associer un message d'erreur
     let errorMessage = '';
-    // Si j'ai pas compris ....
     if (error.error instanceof ErrorEvent) {
-      // Get client-side error
       errorMessage = error.error.message;
     } else {
-      // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     window.alert(errorMessage);

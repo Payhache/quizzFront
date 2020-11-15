@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../../services/question.service';
 import {Question} from '../../models/question';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatRadioChange} from '@angular/material/radio';
+import {Result} from '../../models/result';
+import {TokenStorageService} from '../../services/auth/token-storage.service';
+import {ResultService} from '../../services/result.service';
 
 
 @Component({
@@ -12,13 +15,18 @@ import {MatRadioChange} from '@angular/material/radio';
 })
 export class AnswerQuizzComponent implements OnInit {
 
-  constructor(private  questionService: QuestionService,
-              private route: ActivatedRoute) {
+  constructor(private questionService: QuestionService,
+              private route: ActivatedRoute,
+              private tokenService: TokenStorageService,
+              private resultService: ResultService,
+              private router: Router) {
   }
 
   isLoading: boolean;
   questions: Question[];
   question: Question;
+  finalResult = new Result();
+  currentUser: any;
   idExam: number;
   isNotStarted = true;
   isGoodAnswer: boolean;
@@ -31,6 +39,7 @@ export class AnswerQuizzComponent implements OnInit {
   ngOnInit(): void {
     this.idExam = +this.route.snapshot.paramMap.get('id');
     this.isLoading = true;
+    this.currentUser = this.tokenService.getUser().id;
     this.questionService.getQuestionsForExam(this.idExam).subscribe((data) => {
       this.questions = data['hydra:member'];
       this.isLoading = false;
@@ -74,6 +83,12 @@ export class AnswerQuizzComponent implements OnInit {
       this.isDisabled = true;
     }
     if (this.reponseQuestionSubmited.length === this.questions.length) {
+      this.finalResult.questionnaire = this.question.examen.name;
+      this.finalResult.score = this.scoreExam.toString();
+      this.finalResult.user = this.currentUser;
+      this.resultService.addResult(this.finalResult).subscribe(() => {
+        this.router.navigate(['/admin']);
+      } );
       alert(`Examen finit tu as obtenu ${this.scoreExam}`);
     }
   }

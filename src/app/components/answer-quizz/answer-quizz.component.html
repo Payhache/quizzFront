@@ -1,6 +1,7 @@
 <div *ngIf="isLoading">
   <app-spinner></app-spinner>
 </div>
+<app-menu></app-menu>
 
 <div *ngIf="!isLoading">
   <ng-container *ngIf="isNotStarted">
@@ -26,6 +27,7 @@
 
 <ng-container *ngIf="!isLoading">
   <ng-container *ngIf="!isNotStarted">
+    <h1 class="text-center m-3"> {{question.examen.name}}</h1>
     <div class="container_question">
       <p class="question_sentence" id="{{question.id}}">  {{question.name}} </p>
       <mat-radio-group class="groupRadioReponse" (change)="choice($event)">
