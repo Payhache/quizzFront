@@ -22,8 +22,8 @@
       <td>{{ user.username }}</td>
       <td> test </td>
       <td class="actions">
-          <button mat-raised-button class="mr-3" [routerLink]="['/admin/examen', user.id]"> voir résultats
-            <fa-icon class="see" [icon]="faMousePointer"></fa-icon>
+          <button mat-raised-button class="mr-3"  (click)="openDialogResult(user)">
+            <fa-icon class="see" [icon]="faShowResult"></fa-icon> voir résultats
           </button>
           <button mat-raised-button class="mr-3" [routerLink]="['/admin/examen/edit', user.id]">
             <fa-icon class="check" [icon]="faEdit"></fa-icon>

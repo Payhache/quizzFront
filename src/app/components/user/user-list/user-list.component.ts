@@ -6,8 +6,9 @@ import {UserAddComponent} from '../user-add/user-add.component';
 
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {faEdit} from '@fortawesome/free-solid-svg-icons';
-import {faMousePointer} from '@fortawesome/free-solid-svg-icons';
+import {faPoll} from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute} from '@angular/router';
+import {UserResultComponent} from '../user-result/user-result.component';
 
 
 @Component({
@@ -21,14 +22,16 @@ export class UserListComponent implements OnInit {
 
   // Font Awesome
   faTrashAlt = faTrashAlt;
+  faShowResult = faPoll;
   faEdit = faEdit;
-  faMousePointer = faMousePointer;
 
   // Modal adduser
   userName: string;
   password: string;
   roles: string;
   user = new User();
+
+  // Modal Result
 
 
   constructor(private userService: UserService,
@@ -63,6 +66,29 @@ export class UserListComponent implements OnInit {
           roles: this.roles
         }
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.user.username = result.userName;
+        this.user.password = result.password;
+        this.user.roles = 'ROLE_USER';
+        this.userService.postUser(this.user).subscribe();
+      }
+    });
+  }
+
+  openDialogResult(user: User): void {
+    // m'affiche l'objet en entier
+    console.log(user.result);
+    // m'affiche "undefined"
+    console.log(user.result.questionnaire);
+    const dialogRef = this.dialog.open(UserResultComponent, {
+      width: 'auto',
+      data:
+        {
+          userDisplay: user
+        }
+    });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.user.username = result.userName;

@@ -38,6 +38,8 @@ import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import {AuthGuard} from './guards/auth.guard';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {UserAddComponent} from './components/user/user-add/user-add.component';
+import { UserResultComponent } from './components/user/user-result/user-result.component';
+import {MatTableModule} from '@angular/material/table';
 
 export function getToken() {
   return localStorage.getItem('auth-token');
@@ -62,11 +64,13 @@ export function getToken() {
     UserListComponent,
     LoginComponent,
     UserAddComponent,
+    UserResultComponent,
   ],
   entryComponents: [
     SpinnerComponent,
     ReponseAddComponent,
-    UserAddComponent
+    UserAddComponent,
+    UserResultComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,8 @@ export function getToken() {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule
   ],
   exports: [MatFormFieldModule, MatInputModule],
   providers: [
