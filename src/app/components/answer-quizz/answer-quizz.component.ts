@@ -84,7 +84,7 @@ export class AnswerQuizzComponent implements OnInit {
     }
     if (this.reponseQuestionSubmited.length === this.questions.length) {
       this.finalResult.questionnaire = this.question.examen.name;
-      this.finalResult.score = this.scoreExam.toString();
+      this.finalResult.score = this.changeResultToPercent(this.questions.length, this.scoreExam).toString();
       this.finalResult.user = this.currentUser;
       this.resultService.addResult(this.finalResult).subscribe(() => {
         this.router.navigate(['/admin']);
@@ -95,6 +95,10 @@ export class AnswerQuizzComponent implements OnInit {
 
   checkNumberInArray(numberTofind: number) {
     return this.reponseQuestionSubmited.includes(numberTofind);
+  }
+
+  changeResultToPercent(nbreQuestion: number, score: number): number {
+    return Math.round(score / nbreQuestion * 100);
   }
 
 

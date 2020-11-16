@@ -1,4 +1,21 @@
 
 <h2 mat-dialog-title> Résultats de {{data.userDisplay.username}} </h2>
 
-{{data.userDisplay.result.questionnaire | json}}
+
+<table class="table table-striped table-dark">
+  <thead>
+  <tr>
+    <th scope="col">Questionnaire</th>
+    <th scope="col"> Résultat </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let result of data.userDisplay.result">
+    <th scope="row"> {{result.questionnaire}} </th>
+    <td>{{ result.score }} % de bonnes réponses</td>
+    <td class="actions"></td>
+  </tr>
+  </tbody>
+</table>
+
+

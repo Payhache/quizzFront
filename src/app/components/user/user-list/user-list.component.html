@@ -20,7 +20,7 @@
     <tr *ngFor="let user of this.users">
       <th scope="row">{{ user.id }}</th>
       <td>{{ user.username }}</td>
-      <td> test </td>
+      <td> <ng-container *ngFor="let role of user.roles"> {{ role }}</ng-container> </td>
       <td class="actions">
           <button mat-raised-button class="mr-3"  (click)="openDialogResult(user)">
             <fa-icon class="see" [icon]="faShowResult"></fa-icon> voir résultats
