@@ -3,9 +3,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {User} from '../../models/user';
 import {catchError, retry} from 'rxjs/operators';
+import {environment} from '../../../environments/environment';
 
-const API_URL = 'http://127.0.0.1:8000/api/users';
-const API_REGISTER = 'http://127.0.0.1:8000/register';
+const API_URL = environment.apiUrl + 'users';
+const API_REGISTER = 'https://www.hncshab.fr/register';
 
 @Injectable({
   providedIn: 'root'

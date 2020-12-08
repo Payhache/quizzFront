@@ -4,12 +4,13 @@ import {catchError, retry} from 'rxjs/internal/operators';
 import {Observable, throwError} from 'rxjs';
 import {Question} from '../models/question';
 import {ReponseQuestion} from '../models/reponse-question';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReponseService {
-  apiURL = 'http://127.0.0.1:8000/api/reponses';
+  apiURL = environment.apiUrl + 'reponses';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

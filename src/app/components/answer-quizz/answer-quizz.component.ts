@@ -89,7 +89,7 @@ export class AnswerQuizzComponent implements OnInit {
       this.resultService.addResult(this.finalResult).subscribe(() => {
         this.router.navigate(['/admin']);
       } );
-      alert(`Examen finit tu as obtenu ${this.scoreExam}`);
+      alert(`Examen finit tu as obtenu ${this.scoreExam} bonne(s) réponse(s)`);
     }
   }
 

@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Result} from '../models/result';
+import {environment} from '../../environments/environment';
 
-const API_URL = 'http://127.0.0.1:8000/api/results';
+const API_URL = environment.apiUrl + 'results';
 
 @Injectable({
   providedIn: 'root'

@@ -4,12 +4,13 @@ import { catchError, retry } from 'rxjs/internal/operators';
 import { Observable, throwError } from 'rxjs';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
 import { Question } from '../models/question';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExamenService {
-  apiURL = 'http://127.0.0.1:8000/api/examens';
+  apiURL = environment.apiUrl + 'examens';
   httpOptions = {
     headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -49,16 +50,11 @@ export class ExamenService {
     .pipe(retry(1), catchError(this.handleError));
 
   }
-  // En cas d'erreure de communication avec le serveur
   handleError(error) {
-    // déclaration d'une variable vide pour y associer un message d'erreur
     let errorMessage = '';
-    // Si j'ai pas compris ....
     if (error.error instanceof ErrorEvent) {
-      // Get client-side error
       errorMessage = error.error.message;
     } else {
-      // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     window.alert(errorMessage);

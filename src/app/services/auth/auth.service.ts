@@ -5,7 +5,7 @@ import {User} from '../../models/user';
 import {retry} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
-const AUTH_API = 'http://127.0.0.1:8000/';
+const AUTH_API = 'https://www.hncshab.fr/';
 
 @Injectable({
   providedIn: 'root'
