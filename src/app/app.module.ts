@@ -20,6 +20,16 @@ import {ReponseEditComponent} from './components/reponse/reponse-edit/reponse-ed
 import {AnswerQuizzComponent} from './components/answer-quizz/answer-quizz.component';
 import { ReponseAddComponent} from './components/reponse/reponse-add/reponse-add.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {ValidateEqualModule} from 'ng-validate-equal';
+import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import {AuthGuard} from './guards/auth.guard';
+import {authInterceptorProviders} from './helpers/auth.interceptor';
+import {UserAddComponent} from './components/user/user-add/user-add.component';
+import { UserResultComponent } from './components/user/user-result/user-result.component';
+import {LoginComponent} from './components/login/login.component';
+
+
+
 
 // Material imports
 import {MatCardModule} from '@angular/material/card';
@@ -33,13 +43,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SpinnerComponent} from './components/parts/spinner/spinner.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {UserListComponent} from './components/user/user-list/user-list.component';
-import {LoginComponent} from './components/login/login.component';
-import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
-import {AuthGuard} from './guards/auth.guard';
-import {authInterceptorProviders} from './helpers/auth.interceptor';
-import {UserAddComponent} from './components/user/user-add/user-add.component';
-import { UserResultComponent } from './components/user/user-result/user-result.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 
 export function getToken() {
   return localStorage.getItem('auth-token');
@@ -95,7 +100,9 @@ export function getToken() {
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    ValidateEqualModule
   ],
   exports: [MatFormFieldModule, MatInputModule],
   providers: [

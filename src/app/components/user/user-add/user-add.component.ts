@@ -15,6 +15,8 @@ export interface DialogData {
 })
 export class UserAddComponent implements OnInit {
 
+  hide = true;
+
   constructor(public dialogRef: MatDialogRef<UserAddComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private ngZone: NgZone) { }

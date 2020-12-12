@@ -28,6 +28,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "bootstrap": "^4.5.3",
+    "ng-validate-equal": "^1.0.4",
     "ngx-bootstrap": "^6.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.14.1",
