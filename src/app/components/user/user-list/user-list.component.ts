@@ -85,4 +85,12 @@ export class UserListComponent implements OnInit {
         }
     });
   }
+
+  changeRoleToText(role: string): string {
+    if (role === 'ROLE_ADMIN') {
+      return 'Admin';
+    } else {
+      return 'Utilisateur';
+    }
+  }
 }
