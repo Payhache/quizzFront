@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.form).subscribe(
       data => {
         this.tokenStorage.saveToken(data.token);
-        this.authService.saveUser(data.token).subscribe(then => {
-          this.tokenStorage.saveCurrentUser(then);
+        this.authService.saveUser(data.token).subscribe(user => {
+          this.tokenStorage.saveCurrentUser(user);
           this.router.navigate(['/admin']);
         });
 

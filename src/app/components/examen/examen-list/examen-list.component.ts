@@ -32,12 +32,13 @@ export class ExamenListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.currentUser = this.tokenService.getUser();
 
     if (this.currentUser.roles.includes('ROLE_ADMIN')) {
       this.isAdmin = true;
     }
-    this.isLoading = true;
+
     this.examentService.getAllExams().subscribe((data) => {
       this.examens = data['hydra:member'];
       this.isLoading = false;

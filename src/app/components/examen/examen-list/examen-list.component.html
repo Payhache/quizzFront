@@ -9,33 +9,33 @@
       <th scope="col">#</th>
       <th scope="col"> Questionnaire</th>
       <th scope="col" class="add_exam">
-        <button class="link_add_exam" mat-raised-button color="accent" [routerLink]="['/admin/examen/add']"> Ajouter un
-          questionnaire
+        <button class="link_add_exam" mat-raised-button color="accent" [routerLink]="['/admin/examen/add']"> 
+          Ajouter un questionnaire
         </button>
       </th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let exam of this.examens">
-      <th scope="row">{{ exam.id }}</th>
-      <td>{{ exam.name }}</td>
-      <td class="actions">
-        <ng-container *ngIf="isAdmin">
-        <button mat-raised-button class="mr-3" [routerLink]="['/admin/examen', exam.id]"> voir les questions
-          <fa-icon class="see" [icon]="faMousePointer"></fa-icon>
-        </button>
-        <button mat-raised-button class="mr-3" [routerLink]="['/admin/examen/edit', exam.id]"> Editer
-          <fa-icon class="check" [icon]="faEdit"></fa-icon>
-        </button>
-        <button mat-raised-button class="mr-3" (click)="deleteExamen(exam.id)"> Supprimer
-          <fa-icon class="trash" [icon]="faTrashAlt"></fa-icon>
-        </button>
-        </ng-container>
-        <button mat-raised-button color="primary" class="mr-3" [routerLink]="['/quizz/', exam.id]"> Répondre au
-          questionnaire
-        </button>
-      </td>
-    </tr>
+      <tr *ngFor="let exam of this.examens">
+        <th scope="row">{{ exam.id }}</th>
+        <td>{{ exam.name }}</td>
+        <td class="actions">
+          <ng-container *ngIf="isAdmin">
+            <button mat-raised-button class="mr-3" [routerLink]="['/admin/examen', exam.id]"> Voir les questions
+              <fa-icon class="see" [icon]="faMousePointer"></fa-icon>
+            </button>
+            <button mat-raised-button class="mr-3" [routerLink]="['/admin/examen/edit', exam.id]"> Éditer
+              <fa-icon class="check" [icon]="faEdit"></fa-icon>
+            </button>
+            <button mat-raised-button class="mr-3" (click)="deleteExamen(exam.id)"> Supprimer
+              <fa-icon class="trash" [icon]="faTrashAlt"></fa-icon>
+            </button>
+          </ng-container>
+          <button mat-raised-button color="primary" class="mr-3" [routerLink]="['/quizz/', exam.id]">
+            Répondre au questionnaire
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </ng-container>
