@@ -35,3 +35,23 @@ button {
 .groupRadioReponse {
   margin: 3rem;
 }
+
+#resultDiv {
+  text-align: center;
+}
+
+#goodResultMessage {
+  background-color: rgba(0, 128, 0, 0.438);
+}
+
+#badResultMessage {
+  background-color: rgba(255, 0, 0, 0.445);
+}
+
+.correctExplanation {
+  background-color: rgba(0, 128, 0, 0.418);
+}
+
+.incorrectExplanation {
+  background-color: rgba(255, 0, 0, 0.445);
+}

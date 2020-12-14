@@ -28,11 +28,22 @@
     <p class="question_sentence" id="{{question.id}}"> {{question.name}} </p>
     <mat-radio-group class="groupRadioReponse" (change)="choice($event)">
 
-      <mat-radio-button class="radioReponse" *ngFor="let reponseQuestion of question.reponses" name="{{question.id}}" [value]="reponseQuestion">
-        {{reponseQuestion.name}}
-      </mat-radio-button>
+      <div *ngFor="let reponseQuestion of question.reponses" >
+        <mat-radio-button class="radioReponse" name="{{question.id}}" [value]="reponseQuestion">
+          {{reponseQuestion.name}}
+        </mat-radio-button>
+      <p class="explanation correctExplanation" *ngIf="reponseQuestion.isOk == 1 && displayExplanations">C'est la bonne réponse parce que : {{reponseQuestion.explanation}}</p>
+      <p class="explanation incorrectExplanation" *ngIf="reponseQuestion.isOk == 0 && displayExplanations">C'est une mauvaise réponse parce que : {{reponseQuestion.explanation}}</p>
+      </div>
+     
 
     </mat-radio-group>
+
+    <div id="resultDiv">
+      <p *ngIf="displayCorrectAnswer == true" id="goodResultMessage">Bonne réponse !</p>
+      <p *ngIf="displayCorrectAnswer == false" id="badResultMessage">Mauvaise réponse !</p>
+    </div>
+
 
     <div class="buttons_quizz">
       <button (click)="previousQuestion()" mat-raised-button color="primary"> Précédent</button>

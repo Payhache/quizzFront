@@ -34,6 +34,8 @@ export class AnswerQuizzComponent implements OnInit {
   isDisabled = false;
   currentquestion = 0;
   scoreExam = 0;
+  displayCorrectAnswer: Boolean;
+  displayExplanations: Boolean;
 
 
   ngOnInit(): void {
@@ -53,6 +55,7 @@ export class AnswerQuizzComponent implements OnInit {
   }
 
   nextQuestion(): Question {
+    this.hideExplanationsAndUserAnswer();
     if (this.currentquestion !== this.questions.length - 1) {
       this.currentquestion++;
       this.question = this.questions[this.currentquestion];
@@ -62,6 +65,7 @@ export class AnswerQuizzComponent implements OnInit {
   }
 
   previousQuestion(): Question {
+    this.hideExplanationsAndUserAnswer();
     if (this.currentquestion !== 0) {
       this.currentquestion--;
       this.question = this.questions[this.currentquestion];
@@ -71,14 +75,18 @@ export class AnswerQuizzComponent implements OnInit {
   }
 
   choice(radioSelected: MatRadioChange) {
-    this.isGoodAnswer = radioSelected.value.isOk;
+    this.isGoodAnswer = radioSelected.value.isOk;    
   }
 
   validateReponse() {
     this.reponseQuestionSubmited.push(this.question.id);
     if (this.isGoodAnswer) {
       this.scoreExam++;
+      this.displayCorrectAnswer = true;
+    } else {
+      this.displayCorrectAnswer = false;
     }
+    this.displayExplanations = true;
     if (this.checkNumberInArray(this.question.id)) {
       this.isDisabled = true;
     }
@@ -89,7 +97,7 @@ export class AnswerQuizzComponent implements OnInit {
       this.resultService.addResult(this.finalResult).subscribe(() => {
         this.router.navigate(['/admin']);
       } );
-      alert(`Examen finit tu as obtenu ${this.scoreExam} bonne(s) réponse(s)`);
+      alert(`Examen fini tu as obtenu ${this.scoreExam} bonne(s) réponse(s)`);
     }
   }
 
@@ -101,5 +109,8 @@ export class AnswerQuizzComponent implements OnInit {
     return Math.round(score / nbreQuestion * 100);
   }
 
-
+  hideExplanationsAndUserAnswer() {
+    this.displayExplanations = false;
+    this.displayCorrectAnswer = null;
+  }
 }
