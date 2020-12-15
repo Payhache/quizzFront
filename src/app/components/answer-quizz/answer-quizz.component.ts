@@ -35,8 +35,8 @@ export class AnswerQuizzComponent implements OnInit {
   isSelected = false;
   currentquestion = 0;
   scoreExam = 0;
-  displayCorrectAnswer: Boolean;
-  displayExplanations: Boolean;
+  displayCorrectAnswer: boolean;
+  displayExplanations: boolean;
 
 
   ngOnInit(): void {
@@ -57,6 +57,7 @@ export class AnswerQuizzComponent implements OnInit {
 
   nextQuestion(): Question {
     this.hideExplanationsAndUserAnswer();
+    this.isSelected = false;
     if (this.currentquestion !== this.questions.length - 1) {
       this.currentquestion++;
       this.question = this.questions[this.currentquestion];
@@ -67,6 +68,7 @@ export class AnswerQuizzComponent implements OnInit {
 
   previousQuestion(): Question {
     this.hideExplanationsAndUserAnswer();
+    this.isSelected = false;
     if (this.currentquestion !== 0) {
       this.currentquestion--;
       this.question = this.questions[this.currentquestion];
