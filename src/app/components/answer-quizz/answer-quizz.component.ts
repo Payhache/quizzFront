@@ -32,6 +32,7 @@ export class AnswerQuizzComponent implements OnInit {
   isGoodAnswer: boolean;
   reponseQuestionSubmited: number[] = [];
   isDisabled = false;
+  isSelected = false;
   currentquestion = 0;
   scoreExam = 0;
 
@@ -71,10 +72,12 @@ export class AnswerQuizzComponent implements OnInit {
   }
 
   choice(radioSelected: MatRadioChange) {
+    this.isSelected = true;
     this.isGoodAnswer = radioSelected.value.isOk;
   }
 
   validateReponse() {
+    this.isSelected = false;
     this.reponseQuestionSubmited.push(this.question.id);
     if (this.isGoodAnswer) {
       this.scoreExam++;

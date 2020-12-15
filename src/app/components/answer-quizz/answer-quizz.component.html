@@ -45,12 +45,16 @@
 
         <button (click)="previousQuestion()" mat-raised-button color="primary"> Précédent</button>
 
-        <ng-container *ngIf="!isDisabled">
+        <ng-container *ngIf="!isDisabled && isSelected">
           <button (click)="validateReponse()" mat-raised-button color="accent"> Soumettre la réponse</button>
         </ng-container>
 
         <ng-container *ngIf="isDisabled">
           <button disabled mat-raised-button> Réponse soumise</button>
+        </ng-container>
+
+        <ng-container *ngIf="!isSelected && !isDisabled">
+          <button disabled mat-raised-button>  Veuillez selectionner une réponse </button>
         </ng-container>
 
         <button (click)="nextQuestion()" mat-raised-button color="primary"> Suivant</button>
