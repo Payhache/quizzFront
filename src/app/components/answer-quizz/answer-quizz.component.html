@@ -3,47 +3,50 @@
 </div>
 <app-menu></app-menu>
 
-<div *ngIf="!isLoading">
-  <ng-container *ngIf="isNotStarted">
-    <div class="container_consignes">
-      <h1> Consigne du questionnaire : </h1>
-      <div class="consignes">
-        <ul>
-          <li> Il n'y a qu'une seule bonne réponse par question</li>
-          <li> Une fois répondu vous ne pouvez pas changer votre réponse</li>
-          <li> Pour réussir votre habilitation vous devez avoir un taux de bonne réponse supérieur à 80%</li>
-          <li> Ce questionnaire n'est pas chronométré</li>
-          <li> Aucun support n'est autorisé</li>
-          <li> Une mauvaise réponse n'apporte pas de malus</li>
-        </ul>
-      </div>
-
-      <button class="start_button" mat-raised-button color="warn" (click)="startQuizz()"> commencer le questionnaire
-      </button>
+<div *ngIf="!isLoading && isNotStarted">
+  <div class="container_consignes">
+    <h1> Consignes du questionnaire : </h1>
+    <div class="consignes">
+      <ul>
+        <li> Il n'y a qu'une seule bonne réponse par question</li>
+        <li> Une fois répondu vous ne pouvez pas changer votre réponse</li>
+        <li> Pour réussir votre habilitation vous devez avoir un taux de bonne réponse supérieur à 80%</li>
+        <li> Ce questionnaire n'est pas chronométré</li>
+        <li> Aucun support n'est autorisé</li>
+        <li> Une mauvaise réponse n'apporte pas de malus</li>
+      </ul>
     </div>
-  </ng-container>
+
+    <button class="start_button" mat-raised-button color="warn" (click)="startQuizz()"> Commencer le questionnaire </button>
+  </div>
 </div>
 
 
-<ng-container *ngIf="!isLoading">
-  <ng-container *ngIf="!isNotStarted">
-    <h1 class="text-center m-3"> {{question.examen.name}}</h1>
-    <div class="container_question">
-      <p class="question_sentence" id="{{question.id}}">  {{question.name}} </p>
-      <mat-radio-group class="groupRadioReponse" (change)="choice($event)">
+<ng-container *ngIf="!isLoading && !isNotStarted">
+  <h1 class="text-center m-3"> {{question.examen.name}}</h1>
+  <div class="container_question">
+    <p class="question_sentence" id="{{question.id}}"> {{question.name}} </p>
+    <mat-radio-group class="groupRadioReponse" (change)="choice($event)">
 
-        <mat-radio-button class="radioReponse"
-                          *ngFor="let reponseQuestion of question.reponses"
-                          name="{{question.id}}"
-                          [value]="reponseQuestion">
+      <div *ngFor="let reponseQuestion of question.reponses" >
+        <mat-radio-button class="radioReponse" name="{{question.id}}" [value]="reponseQuestion">
           {{reponseQuestion.name}}
-
         </mat-radio-button>
-      </mat-radio-group>
-      <div class="buttons_quizz">
+      <p class="explanation correctExplanation" *ngIf="reponseQuestion.isOk == 1 && displayExplanations">C'est la bonne réponse parce que : {{reponseQuestion.explanation}}</p>
+      <p class="explanation incorrectExplanation" *ngIf="reponseQuestion.isOk == 0 && displayExplanations">C'est une mauvaise réponse parce que : {{reponseQuestion.explanation}}</p>
+      </div>
 
 
-        <button (click)="previousQuestion()" mat-raised-button color="primary"> Précédent</button>
+    </mat-radio-group>
+
+    <div id="resultDiv">
+      <p *ngIf="displayCorrectAnswer == true" id="goodResultMessage">Bonne réponse !</p>
+      <p *ngIf="displayCorrectAnswer == false" id="badResultMessage">Mauvaise réponse !</p>
+    </div>
+
+
+    <div class="buttons_quizz">
+      <button (click)="previousQuestion()" mat-raised-button color="primary"> Précédent</button>
 
         <ng-container *ngIf="!isDisabled && isSelected">
           <button (click)="validateReponse()" mat-raised-button color="accent"> Soumettre la réponse</button>
@@ -57,8 +60,7 @@
           <button disabled mat-raised-button>  Veuillez selectionner une réponse </button>
         </ng-container>
 
-        <button (click)="nextQuestion()" mat-raised-button color="primary"> Suivant</button>
-      </div>
+      <button (click)="nextQuestion()" mat-raised-button color="primary"> Suivant</button>
     </div>
-  </ng-container>
+  </div>
 </ng-container>
