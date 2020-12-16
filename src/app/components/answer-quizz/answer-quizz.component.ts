@@ -68,7 +68,7 @@ export class AnswerQuizzComponent implements OnInit {
 
   previousQuestion(): Question {
     this.hideExplanationsAndUserAnswer();
-    this.isSelected = false;
+    this.displayMustChoiceButton();
     if (this.currentquestion !== 0) {
       this.currentquestion--;
       this.question = this.questions[this.currentquestion];
@@ -80,11 +80,10 @@ export class AnswerQuizzComponent implements OnInit {
   choice(radioSelected: MatRadioChange) {
     this.isSelected = true;
     this.isGoodAnswer = radioSelected.value.isOk;
-    this.isGoodAnswer = radioSelected.value.isOk;
   }
 
   validateReponse() {
-    this.isSelected = false;
+    this.displayMustChoiceButton();
     this.reponseQuestionSubmited.push(this.question.id);
     if (this.isGoodAnswer) {
       this.scoreExam++;
@@ -118,5 +117,9 @@ export class AnswerQuizzComponent implements OnInit {
   hideExplanationsAndUserAnswer() {
     this.displayExplanations = false;
     this.displayCorrectAnswer = null;
+  }
+
+  displayMustChoiceButton() {
+    this.isSelected = false;
   }
 }
