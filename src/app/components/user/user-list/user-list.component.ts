@@ -28,6 +28,7 @@ export class UserListComponent implements OnInit {
   // Modal adduser
   userName: string;
   password: string;
+  confirmPassword: string;
   roles: string;
   user = new User();
 
@@ -56,22 +57,30 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
+  openDialog(data?: []): void {
+    console.log(data);
     const dialogRef = this.dialog.open(UserAddComponent, {
       width: 'auto',
       data:
         {
           userName: this.userName,
           password: this.password,
+          confirmPassword: this.confirmPassword,
           roles: this.roles
         }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.user.username = result.userName;
-        this.user.password = result.password;
-        this.user.roles = 'ROLE_USER';
-        this.userService.postUser(this.user).subscribe();
+        if (this.checkPasswords(result.password, result.confirmPassword)) {
+          this.user.username = result.userName;
+          this.user.password = result.password;
+          this.user.roles = 'ROLE_USER';
+          this.userService.postUser(this.user).subscribe();
+        } else {
+          console.log(result);
+          this.openDialog(result);
+        }
       }
     });
   }
@@ -92,5 +101,9 @@ export class UserListComponent implements OnInit {
     } else {
       return 'Utilisateur';
     }
+  }
+
+  checkPasswords(password1, password2) {
+    return(password1 === password2);
   }
 }

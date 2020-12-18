@@ -6,6 +6,7 @@ import {take} from 'rxjs/operators';
 export interface DialogData {
   userName: string;
   password: string;
+  confirmPassword: string;
   role: string;
 }
 @Component({
@@ -16,6 +17,7 @@ export interface DialogData {
 export class UserAddComponent implements OnInit {
 
   hide = true;
+  isDisabled = true;
 
   constructor(public dialogRef: MatDialogRef<UserAddComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
